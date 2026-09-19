@@ -1,0 +1,2217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#1a4d8f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>Bourses d'Études 2027-2028 par Pays | BoursesMonde</title>
+<meta name="description" content="Projet bénévole recensant les bourses d'études 2027-2028 par pays : France, Canada, USA, Allemagne, Chine et plus.">
+
+<!-- ============================================
+     CODE GOOGLE ADSENSE
+     ============================================ -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6169639727086297"
+     crossorigin="anonymous"></script>
+
+<style>
+  /* ============================================================
+     RESET UNIVERSEL
+     ============================================================ */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :root {
+    --primary: #1a4d8f;
+    --primary-light: #2d6cdf;
+    --accent: #f59e0b;
+    --dark: #0f172a;
+    --gray: #64748b;
+    --light: #f1f5f9;
+    --white: #ffffff;
+    --radius: 14px;
+    --shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.14);
+    --header-height: 72px;
+    --container-max: 1200px;
+    --container-padding: clamp(16px, 4vw, 32px);
+    --section-padding: clamp(32px, 6vw, 60px);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    background: #f8fafc;
+    color: var(--dark);
+    line-height: 1.6;
+    font-size: clamp(14px, 1.5vw, 16px);
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Support des encoches (iPhone X+, etc.) */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+  }
+
+  a { text-decoration: none; color: inherit; }
+  img, svg { max-width: 100%; height: auto; display: block; }
+  button, input, select, textarea { font-family: inherit; font-size: inherit; }
+
+  /* Focus visible pour accessibilité */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid var(--primary-light);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ============================================================
+     HEADER
+     ============================================================ */
+  header {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: clamp(12px, 2vw, 18px) var(--container-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    position: relative;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+    font-weight: 800;
+    color: var(--primary);
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    width: clamp(34px, 6vw, 42px);
+    height: clamp(34px, 6vw, 42px);
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    color: white;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    flex-shrink: 0;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    gap: clamp(12px, 1.8vw, 24px);
+    align-items: center;
+  }
+
+  nav a {
+    font-weight: 600;
+    font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+    color: var(--gray);
+    transition: color .2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 8px 4px;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    display: inline-block;
+    min-height: 44px;
+    line-height: 28px;
+  }
+
+  nav a:hover { color: var(--primary); }
+  nav a.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.7rem;
+    cursor: pointer;
+    color: var(--primary);
+    padding: 8px;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 8px;
+    transition: background .2s;
+    flex-shrink: 0;
+  }
+
+  .menu-toggle:hover { background: var(--light); }
+
+  /* ============================================================
+     PAGES (SPA)
+     ============================================================ */
+  .page { display: none; }
+  .page.active { display: block; animation: fadeIn .25s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translate(-50%, -20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero {
+    background: linear-gradient(135deg, #1a4d8f 0%, #2d6cdf 60%, #4f8ef7 100%);
+    color: white;
+    padding: clamp(40px, 8vw, 80px) var(--container-padding) clamp(60px, 10vw, 100px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: clamp(40px, 6vw, 60px);
+    background: #f8fafc;
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  }
+
+  .hero h1 {
+    font-size: clamp(1.5rem, 5.5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: clamp(12px, 2vw, 18px);
+    letter-spacing: -0.5px;
+    line-height: 1.15;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero p {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    opacity: .93;
+    max-width: 640px;
+    margin: 0 auto clamp(24px, 4vw, 36px);
+    padding: 0 8px;
+  }
+
+  /* ============================================================
+     SEARCH BOX
+     ============================================================ */
+  .search-box {
+    max-width: 620px;
+    margin: 0 auto;
+    display: flex;
+    background: white;
+    border-radius: 50px;
+    padding: 6px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    z-index: 2;
+    gap: 6px;
+  }
+
+  .search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: clamp(12px, 2vw, 16px) clamp(16px, 3vw, 24px);
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--dark);
+    min-width: 0;
+  }
+
+  .search-box input::placeholder { color: #94a3b8; }
+
+  .search-box button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: clamp(12px, 2vw, 16px) clamp(20px, 3vw, 32px);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.8vw, 1rem);
+    cursor: pointer;
+    transition: transform .15s, background .2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 44px;
+  }
+
+  .search-box button:hover { background: #d97706; }
+  .search-box button:active { transform: scale(0.98); }
+
+  /* ============================================================
+     STATS
+     ============================================================ */
+  .stats {
+    max-width: var(--container-max);
+    margin: clamp(-60px, -6vw, -40px) auto 0;
+    padding: 0 var(--container-padding);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+    gap: clamp(12px, 2vw, 20px);
+    position: relative;
+    z-index: 3;
+  }
+
+  .stat {
+    background: white;
+    border-radius: var(--radius);
+    padding: clamp(18px, 3vw, 26px);
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .stat-num {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+    color: var(--gray);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  /* ============================================================
+     LAYOUT GÉNÉRAL
+     ============================================================ */
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--section-padding) var(--container-padding);
+  }
+
+  .section-title {
+    font-size: clamp(1.25rem, 3vw, 1.7rem);
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--dark);
+    line-height: 1.25;
+  }
+
+  .section-sub {
+    color: var(--gray);
+    margin-bottom: clamp(20px, 3vw, 30px);
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+  }
+
+  /* ============================================================
+     FILTRES PAYS
+     ============================================================ */
+  .country-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(6px, 1.2vw, 10px);
+    margin-bottom: clamp(20px, 3vw, 32px);
+  }
+
+  .country-btn {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: clamp(8px, 1.4vw, 10px) clamp(14px, 2.2vw, 20px);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+    cursor: pointer;
+    transition: all .2s;
+    color: var(--gray);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    white-space: nowrap;
+  }
+
+  .country-btn:hover { border-color: var(--primary-light); color: var(--primary); }
+  .country-btn:active { transform: scale(0.97); }
+  .country-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+  }
+
+  /* ============================================================
+     GRILLE ANNONCES (auto-adaptative)
+     ============================================================ */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+    gap: clamp(16px, 2.5vw, 26px);
+  }
+
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    padding: clamp(18px, 2.5vw, 26px);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
+    border: 1px solid #eef2f7;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .flag { font-size: clamp(1.6rem, 3vw, 2rem); line-height: 1; flex-shrink: 0; }
+
+  .card-country {
+    font-size: clamp(0.72rem, 1.2vw, 0.8rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--primary-light);
+  }
+
+  .card-level {
+    font-size: clamp(0.72rem, 1.2vw, 0.8rem);
+    color: var(--gray);
+  }
+
+  .card h3 {
+    font-size: clamp(1rem, 1.8vw, 1.18rem);
+    font-weight: 700;
+    margin-bottom: 10px;
+    line-height: 1.35;
+    color: var(--dark);
+  }
+
+  .card-desc {
+    font-size: clamp(0.85rem, 1.4vw, 0.94rem);
+    color: var(--gray);
+    margin-bottom: 16px;
+    flex: 1;
+    line-height: 1.55;
+  }
+
+  .card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .tag {
+    font-size: clamp(0.68rem, 1.1vw, 0.78rem);
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 50px;
+    background: var(--light);
+    color: var(--primary);
+    white-space: nowrap;
+  }
+
+  .tag.type { background: #e0f2fe; color: #0369a1; }
+  .tag.amount { background: #fef3c7; color: #b45309; }
+  .tag.deadline { background: #fee2e2; color: #b91c1c; }
+
+  .card-btn {
+    display: block;
+    text-align: center;
+    background: var(--primary);
+    color: white;
+    padding: clamp(11px, 1.8vw, 14px);
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    transition: background .2s, transform .15s;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .card-btn:hover { background: var(--primary-light); }
+  .card-btn:active { transform: scale(0.98); }
+
+  /* ============================================================
+     BLOCS PUB
+     ============================================================ */
+  .ad-container {
+    max-width: var(--container-max);
+    margin: clamp(28px, 4vw, 44px) auto;
+    padding: 0 var(--container-padding);
+    text-align: center;
+  }
+
+  .ad-label {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #94a3b8;
+    margin-bottom: 8px;
+  }
+
+  .ad-box {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: var(--radius);
+    min-height: 90px;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    padding: 8px;
+  }
+
+  /* ============================================================
+     NEWSLETTER
+     ============================================================ */
+  .newsletter {
+    background: linear-gradient(135deg, var(--dark), #1e293b);
+    border-radius: clamp(14px, 2vw, 20px);
+    padding: clamp(32px, 6vw, 54px) clamp(20px, 4vw, 36px);
+    text-align: center;
+    color: white;
+    margin: 20px 0;
+  }
+
+  .newsletter h2 {
+    font-size: clamp(1.15rem, 2.8vw, 1.75rem);
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+
+  .newsletter p {
+    opacity: .8;
+    margin-bottom: 24px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: clamp(0.88rem, 1.5vw, 1rem);
+  }
+
+  .newsletter form {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .newsletter input {
+    flex: 1;
+    min-width: min(220px, 100%);
+    padding: clamp(12px, 2vw, 15px) clamp(16px, 2.5vw, 22px);
+    border: none;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    outline: none;
+    min-height: 48px;
+  }
+
+  .newsletter button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: clamp(12px, 2vw, 15px) clamp(22px, 3.5vw, 32px);
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    min-height: 48px;
+    white-space: nowrap;
+  }
+
+  .newsletter button:hover { background: #d97706; }
+  .newsletter button:active { transform: scale(0.98); }
+
+  /* ============================================================
+     PAGES LÉGALES / CONTACT
+     ============================================================ */
+  .page-hero {
+    background: linear-gradient(135deg, #1a4d8f, #2d6cdf);
+    color: white;
+    padding: clamp(36px, 7vw, 64px) var(--container-padding);
+    text-align: center;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .page-hero p {
+    opacity: .9;
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+  }
+
+  .content-box {
+    background: white;
+    border-radius: var(--radius);
+    padding: clamp(20px, 4vw, 42px);
+    box-shadow: var(--shadow);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .content-box h2 {
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    color: var(--primary);
+    margin: clamp(20px, 3vw, 30px) 0 12px;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .content-box h2:first-child { margin-top: 0; }
+
+  .content-box p,
+  .content-box li {
+    color: #334155;
+    font-size: clamp(0.88rem, 1.5vw, 0.98rem);
+    margin-bottom: 12px;
+    line-height: 1.65;
+  }
+
+  .content-box ul { padding-left: clamp(18px, 3vw, 24px); margin-bottom: 16px; }
+  .content-box li { margin-bottom: 8px; }
+
+  .content-box a.inline-link {
+    color: var(--primary-light);
+    font-weight: 600;
+    text-decoration: underline;
+    cursor: pointer;
+    word-break: break-word;
+  }
+
+  .info-note {
+    background: #eff6ff;
+    border-left: 4px solid var(--primary-light);
+    padding: clamp(12px, 2vw, 18px) clamp(14px, 2.5vw, 22px);
+    border-radius: 8px;
+    margin: 20px 0;
+    font-size: clamp(0.85rem, 1.4vw, 0.94rem);
+    color: #1e40af;
+    line-height: 1.55;
+  }
+
+  /* ============================================================
+     FORMULAIRE CONTACT
+     ============================================================ */
+  .contact-form { display: grid; gap: clamp(14px, 2vw, 18px); margin-top: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 2vw, 18px); }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-weight: 600;
+    font-size: clamp(0.85rem, 1.4vw, 0.92rem);
+    color: var(--dark);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: clamp(11px, 1.8vw, 14px) clamp(13px, 2vw, 16px);
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: clamp(0.88rem, 1.5vw, 0.96rem);
+    outline: none;
+    transition: border-color .2s;
+    background: white;
+    color: var(--dark);
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--primary-light);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 130px;
+    font-family: inherit;
+  }
+
+  .submit-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: clamp(13px, 2vw, 16px) clamp(24px, 4vw, 34px);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    cursor: pointer;
+    transition: background .2s, transform .15s;
+    justify-self: start;
+    min-height: 48px;
+  }
+
+  .submit-btn:hover { background: var(--primary-light); transform: translateY(-2px); }
+  .submit-btn:active { transform: translateY(0); }
+
+  .contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+    gap: clamp(12px, 2vw, 20px);
+    margin-bottom: 30px;
+  }
+
+  .contact-info-card {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: clamp(16px, 2.5vw, 22px);
+    text-align: center;
+    border: 1px solid #e2e8f0;
+  }
+
+  .contact-info-card .icon { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-bottom: 6px; }
+  .contact-info-card h4 { font-size: clamp(0.9rem, 1.6vw, 1rem); margin-bottom: 6px; color: var(--primary); }
+  .contact-info-card p {
+    font-size: clamp(0.82rem, 1.4vw, 0.92rem);
+    color: var(--gray);
+    word-break: break-word;
+  }
+  .contact-info-card p a { color: var(--primary-light); font-weight: 600; }
+
+  .success-msg {
+    background: #dcfce7;
+    border-left: 4px solid #16a34a;
+    color: #166534;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-weight: 600;
+    display: none;
+    font-size: clamp(0.88rem, 1.5vw, 0.96rem);
+  }
+
+  /* ============================================================
+     PAGE DÉTAIL BOURSE
+     ============================================================ */
+  .detail-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: clamp(20px, 4vw, 42px);
+    box-shadow: var(--shadow);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  }
+
+  .detail-header {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 18px);
+    margin-bottom: clamp(18px, 3vw, 26px);
+    padding-bottom: clamp(18px, 3vw, 26px);
+    border-bottom: 2px solid #f1f5f9;
+  }
+
+  .detail-flag { font-size: clamp(2.4rem, 6vw, 3.6rem); line-height: 1; flex-shrink: 0; }
+
+  .detail-country {
+    font-size: clamp(0.75rem, 1.3vw, 0.85rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary-light);
+    margin-bottom: 4px;
+  }
+
+  .detail-title {
+    font-size: clamp(1.1rem, 2.8vw, 1.55rem);
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+
+  .detail-level {
+    font-size: clamp(0.82rem, 1.4vw, 0.92rem);
+    color: var(--gray);
+    margin-top: 6px;
+  }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
+    gap: clamp(10px, 2vw, 16px);
+    margin: clamp(20px, 3vw, 26px) 0;
+  }
+
+  .detail-info {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: clamp(14px, 2vw, 18px);
+    border-left: 3px solid var(--primary-light);
+  }
+
+  .detail-info-label {
+    font-size: clamp(0.7rem, 1.2vw, 0.78rem);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: var(--gray);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .detail-info-value {
+    font-size: clamp(0.9rem, 1.6vw, 1rem);
+    font-weight: 700;
+    color: var(--dark);
+  }
+
+  .detail-description {
+    font-size: clamp(0.88rem, 1.5vw, 1rem);
+    color: #334155;
+    line-height: 1.7;
+    margin: clamp(18px, 3vw, 26px) 0;
+    padding: clamp(14px, 2.5vw, 22px);
+    background: #f8fafc;
+    border-radius: 12px;
+  }
+
+  .detail-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: clamp(22px, 3vw, 32px);
+  }
+
+  .btn-official {
+    flex: 1;
+    min-width: min(240px, 100%);
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: clamp(14px, 2vw, 18px) clamp(24px, 3vw, 34px);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: clamp(0.92rem, 1.7vw, 1.08rem);
+    text-align: center;
+    transition: transform .2s, box-shadow .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 6px 20px rgba(45, 108, 223, 0.3);
+    cursor: pointer;
+    min-height: 52px;
+  }
+
+  .btn-official:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(45, 108, 223, 0.45);
+  }
+  .btn-official:active { transform: translateY(0); }
+
+  .btn-back {
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: clamp(14px, 2vw, 18px) clamp(20px, 3vw, 30px);
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
+    cursor: pointer;
+    transition: all .2s;
+    min-height: 52px;
+    white-space: nowrap;
+  }
+
+  .btn-back:hover { background: var(--primary); color: white; }
+
+  .detail-note {
+    background: #fef3c7;
+    border-left: 4px solid var(--accent);
+    padding: clamp(12px, 2vw, 16px) clamp(14px, 2.5vw, 20px);
+    border-radius: 8px;
+    font-size: clamp(0.82rem, 1.4vw, 0.9rem);
+    color: #92400e;
+    margin-top: clamp(20px, 3vw, 26px);
+    line-height: 1.55;
+  }
+
+  .share-bar {
+    display: flex;
+    align-items: center;
+    gap: clamp(8px, 1.5vw, 12px);
+    margin-top: clamp(20px, 3vw, 26px);
+    padding-top: clamp(20px, 3vw, 26px);
+    border-top: 2px solid #f1f5f9;
+    flex-wrap: wrap;
+  }
+
+  .share-bar-label {
+    font-weight: 700;
+    font-size: clamp(0.82rem, 1.4vw, 0.92rem);
+    color: var(--gray);
+    width: 100%;
+  }
+
+  .share-btn {
+    background: #f1f5f9;
+    border: none;
+    padding: clamp(9px, 1.5vw, 11px) clamp(14px, 2.2vw, 18px);
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: clamp(0.78rem, 1.3vw, 0.86rem);
+    cursor: pointer;
+    transition: all .2s;
+    color: var(--dark);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+  }
+
+  .share-btn:hover { background: var(--primary); color: white; }
+  .share-btn:active { transform: scale(0.97); }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  footer {
+    background: var(--dark);
+    color: #94a3b8;
+    padding: clamp(36px, 5vw, 54px) var(--container-padding) 24px;
+    margin-top: 40px;
+  }
+
+  .footer-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: clamp(24px, 4vw, 40px);
+    margin-bottom: clamp(28px, 4vw, 40px);
+  }
+
+  .footer-col h4 {
+    color: white;
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    margin-bottom: 14px;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 9px; font-size: clamp(0.82rem, 1.4vw, 0.92rem); }
+
+  .footer-col a {
+    cursor: pointer;
+    transition: color .2s;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+    text-align: left;
+    padding: 6px 0;
+    display: inline-block;
+    min-height: 32px;
+  }
+
+  .footer-col a:hover { color: var(--primary-light); }
+  .footer-col .email-link { color: #60a5fa; }
+
+  .footer-bottom {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding-top: 22px;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+    font-size: clamp(0.75rem, 1.2vw, 0.86rem);
+    line-height: 1.5;
+  }
+
+  .empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--gray);
+  }
+
+  /* ============================================================
+     TABLETTES (max 1024px)
+     ============================================================ */
+  @media (max-width: 1024px) {
+    :root { --container-padding: clamp(16px, 3vw, 26px); }
+  }
+
+  /* ============================================================
+     MOBILES / TABLETTES PORTRAIT (max 768px)
+     ============================================================ */
+  @media (max-width: 768px) {
+    :root {
+      --header-height: 64px;
+      --section-padding: clamp(28px, 6vw, 42px);
+    }
+
+    /* Menu hamburger */
+    nav ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      flex-direction: column;
+      padding: 16px var(--container-padding);
+      gap: 4px;
+      box-shadow: var(--shadow-lg);
+      align-items: stretch;
+      z-index: 99;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    nav ul.open { display: flex; }
+    nav a {
+      width: 100%;
+      padding: 12px 8px;
+      border-bottom: 1px solid #f1f5f9;
+      border-left: none;
+      text-align: left;
+      font-size: 0.95rem;
+      min-height: 48px;
+      line-height: 24px;
+    }
+    nav a.active { border-left: 3px solid var(--primary); padding-left: 12px; }
+    nav a:last-child { border-bottom: none; }
+
+    .menu-toggle { display: block; }
+
+    /* Recherche empilée */
+    .search-box {
+      flex-direction: column;
+      border-radius: 16px;
+      padding: 10px;
+      gap: 8px;
+    }
+
+    .search-box input,
+    .search-box button {
+      border-radius: 12px;
+      width: 100%;
+    }
+
+    .search-box button { padding: 14px 20px; }
+
+    /* Formulaires */
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Détails */
+    .detail-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 12px;
+    }
+
+    .detail-actions {
+      flex-direction: column;
+    }
+
+    .btn-official,
+    .btn-back {
+      min-width: 100%;
+      width: 100%;
+    }
+
+    /* Newsletter */
+    .newsletter form {
+      flex-direction: column;
+    }
+    .newsletter input,
+    .newsletter button {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    /* Footer */
+    .footer-inner { text-align: center; }
+    .footer-col a { text-align: center; }
+    .footer-col ul { display: inline-block; text-align: left; }
+  }
+
+  /* ============================================================
+     PETITS MOBILES (max 480px)
+     ============================================================ */
+  @media (max-width: 480px) {
+    :root {
+      --container-padding: 14px;
+      --radius: 12px;
+    }
+
+    .hero { padding: 32px 14px 70px; }
+    .hero h1 { font-size: 1.45rem; letter-spacing: -0.3px; }
+    .hero p { font-size: 0.9rem; }
+
+    .stats {
+      grid-template-columns: 1fr 1fr;
+      margin-top: -30px;
+    }
+    .stat { padding: 14px 10px; }
+    .stat-num { font-size: 1.4rem; }
+    .stat-label { font-size: 0.72rem; }
+
+    .grid { grid-template-columns: 1fr; }
+
+    .card { padding: 16px; }
+    .card h3 { font-size: 1rem; }
+
+    .country-filter { gap: 5px; }
+    .country-btn {
+      padding: 7px 12px;
+      font-size: 0.74rem;
+      min-height: 36px;
+    }
+
+    .share-bar { gap: 6px; }
+    .share-btn {
+      flex: 1 1 calc(50% - 3px);
+      justify-content: center;
+      min-width: 0;
+    }
+    .share-bar-label { font-size: 0.78rem; }
+
+    .content-box { padding: 18px 14px; }
+    .info-note { padding: 12px 14px; font-size: 0.82rem; }
+
+    .detail-card { padding: 18px 14px; }
+    .detail-flag { font-size: 2.2rem; }
+    .detail-title { font-size: 1.05rem; }
+
+    .footer-bottom { font-size: 0.72rem; padding-top: 18px; }
+  }
+
+  /* ============================================================
+     TRÈS PETITS MOBILES (max 360px)
+     ============================================================ */
+  @media (max-width: 360px) {
+    .hero h1 { font-size: 1.3rem; }
+    .logo span:first-child { display: none; } /* Masquer "Bourses" si besoin */
+    nav a { font-size: 0.88rem; }
+    .stat-num { font-size: 1.2rem; }
+    .stat-label { font-size: 0.68rem; }
+    .country-btn { font-size: 0.7rem; padding: 6px 10px; }
+    .tag { font-size: 0.65rem; padding: 4px 9px; }
+    .card h3 { font-size: 0.95rem; }
+  }
+
+  /* ============================================================
+     GRANDS ÉCRANS (min 1440px)
+     ============================================================ */
+  @media (min-width: 1440px) {
+    :root {
+      --container-max: 1320px;
+      --container-padding: 40px;
+    }
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+  }
+
+  /* ============================================================
+     TRÈS GRANDS ÉCRANS (min 1920px - TV, 4K)
+     ============================================================ */
+  @media (min-width: 1920px) {
+    :root {
+      --container-max: 1600px;
+      --container-padding: 60px;
+    }
+
+    body { font-size: 17px; }
+
+    .hero h1 { font-size: 3.4rem; }
+    .hero p { font-size: 1.25rem; }
+
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 32px;
+    }
+
+    .card h3 { font-size: 1.3rem; }
+    .card-desc { font-size: 1rem; }
+
+    .section-title { font-size: 2rem; }
+    .content-box { max-width: 1100px; }
+  }
+
+  /* ============================================================
+     ÉCRANS ULTRA-LARGES (min 2560px)
+     ============================================================ */
+  @media (min-width: 2560px) {
+    :root {
+      --container-max: 2000px;
+    }
+    body { font-size: 19px; }
+    .hero h1 { font-size: 4rem; }
+    .grid { grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); }
+  }
+
+  /* ============================================================
+     MODE PAYSAGE SUR MOBILES (hauteur limitée)
+     ============================================================ */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+      padding: 20px 20px 50px;
+    }
+    .hero h1 { font-size: 1.3rem; }
+    .hero p { display: none; }
+    .search-box { padding: 4px; }
+    .stats { margin-top: -20px; }
+    .stat { padding: 12px; }
+    .stat-num { font-size: 1.2rem; }
+  }
+
+  /* ============================================================
+     ÉCRANS TACTILES (amélioration tap)
+     ============================================================ */
+  @media (hover: none) and (pointer: coarse) {
+    .card:hover { transform: none; }
+    .card:active { transform: scale(0.98); box-shadow: var(--shadow-lg); }
+    .country-btn:hover { border-color: #e2e8f0; color: var(--gray); }
+    .country-btn.active:hover { border-color: var(--primary); color: white; }
+    .share-btn:hover { background: #f1f5f9; color: var(--dark); }
+    .btn-official:hover { transform: none; box-shadow: 0 6px 20px rgba(45, 108, 223, 0.3); }
+    .btn-official:active { transform: scale(0.98); }
+  }
+
+  /* ============================================================
+     PREFERS REDUCED MOTION (accessibilité)
+     ============================================================ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ============================================================
+     PREFERS COLOR SCHEME (mode sombre optionnel)
+     ============================================================ */
+  @media (prefers-color-scheme: dark) {
+    /* Optionnel : décommentez pour activer le mode sombre automatique
+    body { background: #0f172a; color: #f1f5f9; }
+    */
+  }
+
+  /* ============================================================
+     STYLES D'IMPRESSION
+     ============================================================ */
+  @media print {
+    header, footer, .ad-container, .newsletter, .search-box,
+    .share-bar, .menu-toggle, .country-filter, .btn-back {
+      display: none !important;
+    }
+
+    body {
+      background: white !important;
+      color: black !important;
+      font-size: 12pt;
+    }
+
+    .page { display: block !important; }
+    .page:not(.active) { display: none !important; }
+
+    .card, .detail-card, .content-box {
+      box-shadow: none !important;
+      border: 1px solid #ccc !important;
+      page-break-inside: avoid;
+      background: white !important;
+    }
+
+    .btn-official {
+      background: white !important;
+      color: black !important;
+      border: 2px solid black !important;
+      box-shadow: none !important;
+    }
+
+    a { color: black; text-decoration: underline; }
+    a[href]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="header-inner">
+    <button class="logo" onclick="navigate('accueil')" aria-label="Retour à l'accueil">
+      <span class="logo-icon">🎓</span>
+      <span>Bourses<span style="color:var(--accent)">Monde</span></span>
+    </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav aria-label="Navigation principale">
+      <ul id="navMenu">
+        <li><a onclick="navigate('accueil')" data-nav="accueil">Accueil</a></li>
+        <li><a onclick="navigate('bourses')" data-nav="bourses">Bourses</a></li>
+        <li><a onclick="navigate('mentions')" data-nav="mentions">Mentions légales</a></li>
+        <li><a onclick="navigate('confidentialite')" data-nav="confidentialite">Confidentialité</a></li>
+        <li><a onclick="navigate('contact')" data-nav="contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============================================================
+     PAGE : ACCUEIL
+     ============================================================ -->
+<div class="page active" id="page-accueil">
+
+  <section class="hero">
+    <h1>Trouvez votre bourse d'études 2027-2028 à l'étranger</h1>
+    <p>Projet bénévole et indépendant recensant des centaines d'annonces vérifiées : gouvernements, universités, organismes privés.</p>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Rechercher une bourse, un pays..." aria-label="Rechercher une bourse">
+      <button onclick="rechercherDepuisAccueil()">Rechercher</button>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num" id="totalBourses">0</div>
+      <div class="stat-label">Bourses actives</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" id="totalPays">0</div>
+      <div class="stat-label">Pays couverts</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Gratuit</div>
+    </div>
+  </div>
+
+  <div class="ad-container">
+    <div class="ad-label">Publicité</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6169639727086297"
+           data-ad-slot="1111111111"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">Pourquoi BoursesMonde ?</h2>
+    <p class="section-sub">Un projet d'entraide pour financer vos études à l'étranger</p>
+    <div class="grid">
+      <div class="card">
+        <h3>🌍 Couverture internationale</h3>
+        <p class="card-desc">Plus de 15 pays couverts : France, Canada, USA, Royaume-Uni, Allemagne, Chine, Japon, Australie et bien plus.</p>
+      </div>
+      <div class="card">
+        <h3>🎯 Bourses vérifiées</h3>
+        <p class="card-desc">Chaque annonce est vérifiée et liée directement au site officiel de l'organisme émetteur.</p>
+      </div>
+      <div class="card">
+        <h3>💛 Projet bénévole</h3>
+        <p class="card-desc">Aucun but lucratif. Juste l'envie d'aider les étudiants à trouver un financement.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="conseils">
+    <h2 class="section-title">Conseils pour décrocher une bourse</h2>
+    <p class="section-sub">Nos guides pour maximiser vos chances</p>
+    <div class="grid">
+      <div class="card">
+        <h3>📝 Soigner sa lettre de motivation</h3>
+        <p class="card-desc">Une lettre personnalisée et convaincante fait souvent la différence entre deux dossiers équivalents.</p>
+      </div>
+      <div class="card">
+        <h3>⏰ Respecter les deadlines</h3>
+        <p class="card-desc">La plupart des bourses 2027-2028 se ferment plusieurs mois avant la rentrée. Postulez tôt.</p>
+      </div>
+      <div class="card">
+        <h3>🌍 Multiplier les candidatures</h3>
+        <p class="card-desc">Ne misez pas tout sur une seule bourse. Postulez à plusieurs programmes pour augmenter vos chances.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="container" id="newsletter">
+    <div class="newsletter">
+      <h2>🔔 Recevez les nouvelles bourses 2027-2028 par email</h2>
+      <p>Inscrivez-vous et recevez les meilleures opportunités de financement adaptées à votre profil.</p>
+      <form onsubmit="event.preventDefault(); alert('Merci ! Votre inscription est bien prise en compte.'); this.reset();">
+        <input type="email" placeholder="votre@email.com" required aria-label="Votre email">
+        <button type="submit">S'abonner</button>
+      </form>
+    </div>
+  </section>
+
+</div>
+
+<!-- ============================================================
+     PAGE : BOURSES
+     ============================================================ -->
+<div class="page" id="page-bourses">
+
+  <section class="page-hero">
+    <h1>Toutes les bourses 2027-2028</h1>
+    <p>Filtrez par pays ou recherchez par mot-clé</p>
+  </section>
+
+  <div class="ad-container">
+    <div class="ad-label">Publicité</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6169639727086297"
+           data-ad-slot="1111111111"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="search-box" style="box-shadow: var(--shadow); border: 1px solid #e2e8f0; margin-bottom: 24px;">
+      <input type="text" id="searchInput2" placeholder="Rechercher une bourse..." aria-label="Rechercher">
+      <button onclick="filtrer()">Rechercher</button>
+    </div>
+
+    <div class="country-filter" id="countryFilter"></div>
+    <div class="grid" id="boursesGrid"></div>
+  </div>
+
+  <div class="ad-container">
+    <div class="ad-label">Publicité</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6169639727086297"
+           data-ad-slot="2222222222"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================================
+     PAGE : DÉTAIL D'UNE BOURSE
+     ============================================================ -->
+<div class="page" id="page-bourse-detail">
+  <section class="page-hero">
+    <h1>Détail de la bourse</h1>
+    <p>Consultez les informations puis accédez au site officiel</p>
+  </section>
+
+  <div class="container">
+    <div id="detailContent"></div>
+  </div>
+
+  <div class="ad-container">
+    <div class="ad-label">Publicité</div>
+    <div class="ad-box">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6169639727086297"
+           data-ad-slot="3333333333"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE : MENTIONS LÉGALES
+     ============================================================ -->
+<div class="page" id="page-mentions">
+  <section class="page-hero">
+    <h1>Mentions légales</h1>
+    <p>Informations légales relatives au site BoursesMonde</p>
+  </section>
+
+  <div class="container">
+    <div class="content-box">
+      <div class="info-note">
+        🤝 <strong>BoursesMonde est un projet personnel et bénévole</strong>, géré par un particulier anonyme. Ce site a pour unique objectif d'aider les étudiants à trouver des bourses d'études à l'étranger. Aucun but lucratif.
+      </div>
+
+      <h2>1. Éditeur du site</h2>
+      <p>Le site <strong>BoursesMonde</strong> est édité par un <strong>particulier indépendant</strong> souhaitant rester anonyme.</p>
+      <p>Conformément à l'article 6-III-2 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique (LCEN), l'identité de l'éditeur peut rester confidentielle.</p>
+      <p><strong>Contact :</strong> par email à <a href="mailto:boursesmonde@gmail.com" class="inline-link">boursesmonde@gmail.com</a> ou via le <a onclick="navigate('contact')" class="inline-link">formulaire de contact</a>.</p>
+
+      <h2>2. Nature du site</h2>
+      <p>BoursesMonde est un site <strong>d'information et d'entraide</strong> à but non lucratif. Il recense et partage des annonces de bourses d'études publiées publiquement par des gouvernements, universités, organismes privés et fondations internationales.</p>
+      <p>Le site n'attribue aucune bourse, ne gère aucune candidature et n'entretient aucun lien officiel avec les organismes cités.</p>
+
+      <h2>3. Hébergement</h2>
+      <p>Le site est hébergé par un prestataire technique professionnel. Les coordonnées complètes de l'hébergeur sont disponibles sur simple demande à <a href="mailto:boursesmonde@gmail.com" class="inline-link">boursesmonde@gmail.com</a>.</p>
+
+      <h2>4. Propriété intellectuelle</h2>
+      <p>La structure du site, les textes originaux et la présentation générale sont protégés. Les informations relatives aux bourses proviennent de sources publiques officielles et restent la propriété de leurs organismes émetteurs respectifs.</p>
+
+      <h2>5. Nature des informations publiées</h2>
+      <p>Les informations relatives aux bourses d'études présentées sur BoursesMonde sont fournies à titre indicatif. Elles sont issues de sources publiques officielles.</p>
+      <div class="info-note">
+        ⚠️ <strong>Important :</strong> BoursesMonde ne gère aucune candidature et n'attribue aucune bourse. Vérifiez toujours les informations sur le <strong>site officiel</strong> avant de postuler.
+      </div>
+
+      <h2>6. Limitation de responsabilité</h2>
+      <p>En tant qu'éditeur bénévole et anonyme, BoursesMonde met tout en œuvre pour fournir des informations exactes, mais ne peut garantir l'exhaustivité. Le site ne saurait être tenu responsable des erreurs, omissions, modifications apportées par les organismes émetteurs, ou conséquences liées à une candidature.</p>
+
+      <h2>7. Liens hypertextes</h2>
+      <p>Le site contient des liens vers des sites tiers. BoursesMonde n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.</p>
+
+      <h2>8. Publicité</h2>
+      <p>Pour financer l'hébergement, BoursesMonde peut diffuser des annonces publicitaires via <strong>Google AdSense</strong>. Ces publicités sont identifiées par la mention « Publicité ».</p>
+
+      <h2>9. Signalement d'erreur</h2>
+      <p>Si vous constatez une erreur, merci de nous le signaler à <a href="mailto:boursesmonde@gmail.com" class="inline-link">boursesmonde@gmail.com</a> ou via la page <a onclick="navigate('contact')" class="inline-link">Contact</a>.</p>
+
+      <h2>10. Droit applicable</h2>
+      <p>Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+
+      <p style="margin-top:30px; font-size:.85rem; color:#94a3b8;">Dernière mise à jour : 19 septembre 2026</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE : POLITIQUE DE CONFIDENTIALITÉ
+     ============================================================ -->
+<div class="page" id="page-confidentialite">
+  <section class="page-hero">
+    <h1>Politique de confidentialité</h1>
+    <p>Comment nous protégeons vos données personnelles</p>
+  </section>
+
+  <div class="container">
+    <div class="content-box">
+      <div class="info-note">
+        🔒 BoursesMonde respecte votre vie privée et s'engage à protéger vos données personnelles conformément au RGPD.
+      </div>
+
+      <h2>1. Responsable du traitement</h2>
+      <p>Le responsable du traitement est <strong>l'éditeur anonyme du site BoursesMonde</strong>, particulier indépendant agissant à titre bénévole.</p>
+      <p>Contact : <a href="mailto:boursesmonde@gmail.com" class="inline-link">boursesmonde@gmail.com</a> ou <a onclick="navigate('contact')" class="inline-link">formulaire de contact</a>.</p>
+
+      <h2>2. Données collectées</h2>
+      <ul>
+        <li><strong>Newsletter :</strong> adresse email</li>
+        <li><strong>Contact :</strong> nom (ou pseudonyme), email, sujet, message</li>
+        <li><strong>Navigation :</strong> IP anonymisée, type de navigateur (via cookies)</li>
+        <li><strong>Publicité :</strong> collectées par Google AdSense (voir section 6)</li>
+      </ul>
+
+      <h2>3. Finalités du traitement</h2>
+      <ul>
+        <li>Envoi des alertes de nouvelles bourses</li>
+        <li>Réponse à vos messages</li>
+        <li>Amélioration du contenu du site</li>
+        <li>Affichage de publicités via Google AdSense</li>
+        <li>Statistiques anonymisées</li>
+      </ul>
+
+      <h2>4. Base légale</h2>
+      <ul>
+        <li><strong>Votre consentement</strong> (newsletter, cookies non essentiels)</li>
+        <li><strong>L'intérêt légitime</strong> (amélioration du service, sécurité)</li>
+      </ul>
+
+      <h2>5. Durée de conservation</h2>
+      <ul>
+        <li><strong>Email newsletter :</strong> jusqu'à désinscription</li>
+        <li><strong>Messages de contact :</strong> 12 mois maximum</li>
+        <li><strong>Cookies :</strong> 13 mois maximum</li>
+        <li><strong>Logs de navigation :</strong> 12 mois maximum</li>
+      </ul>
+
+      <h2>6. Cookies et Google AdSense</h2>
+      <p>BoursesMonde utilise <strong>Google AdSense</strong> (éditeur : ca-pub-6169639727086297). Google et ses partenaires peuvent utiliser des cookies pour afficher des annonces personnalisées, mesurer l'efficacité des campagnes et limiter le nombre d'affichages.</p>
+      <p>Gérez vos préférences : <a href="https://adssettings.google.com" target="_blank" rel="noopener" class="inline-link">https://adssettings.google.com</a></p>
+      <p>Politique Google : <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" class="inline-link">https://policies.google.com/privacy</a></p>
+
+      <h2>7. Partage des données</h2>
+      <p>Vos données ne sont <strong>jamais vendues</strong> à des tiers. Elles peuvent être transmises uniquement à Google AdSense (données anonymisées), notre hébergeur, notre service d'emailing, ou les autorités légales si obligation légale.</p>
+
+      <h2>8. Vos droits (RGPD)</h2>
+      <ul>
+        <li><strong>Droit d'accès</strong> : obtenir une copie de vos données</li>
+        <li><strong>Droit de rectification</strong> : corriger vos données</li>
+        <li><strong>Droit à l'effacement</strong> : supprimer vos données</li>
+        <li><strong>Droit à la limitation</strong> : limiter le traitement</li>
+        <li><strong>Droit d'opposition</strong> : vous opposer au traitement</li>
+        <li><strong>Droit à la portabilité</strong> : récupérer vos données</li>
+        <li><strong>Droit de retirer votre consentement</strong></li>
+      </ul>
+      <p>Pour exercer ces droits : <a href="mailto:boursesmonde@gmail.com" class="inline-link">boursesmonde@gmail.com</a> ou via la page <a onclick="navigate('contact')" class="inline-link">Contact</a>.</p>
+
+      <h2>9. Sécurité des données</h2>
+      <p>Mesures techniques appropriées : connexion HTTPS, hébergement sécurisé, limitation stricte des données collectées.</p>
+
+      <h2>10. Transfert hors UE</h2>
+      <p>Certains services tiers (Google AdSense) peuvent transférer des données hors UE. Ces transferts sont encadrés par des garanties appropriées.</p>
+
+      <h2>11. Mineurs</h2>
+      <p>Le site s'adresse principalement à un public majeur. Nous ne collectons pas sciemment de données de moins de 16 ans sans consentement parental.</p>
+
+      <h2>12. Modifications</h2>
+      <p>Cette politique peut être mise à jour. La date de dernière mise à jour figure en bas de page.</p>
+
+      <h2>13. Réclamation</h2>
+      <p>En cas de désaccord, vous pouvez saisir la <strong>CNIL</strong> : <a href="https://www.cnil.fr" target="_blank" rel="noopener" class="inline-link">www.cnil.fr</a></p>
+
+      <p style="margin-top:30px; font-size:.85rem; color:#94a3b8;">Dernière mise à jour : 19 septembre 2026</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PAGE : CONTACT
+     ============================================================ -->
+<div class="page" id="page-contact">
+  <section class="page-hero">
+    <h1>Contactez-nous</h1>
+    <p>Une question, une suggestion ? Écrivez-nous à <strong>boursesmonde@gmail.com</strong></p>
+  </section>
+
+  <div class="container">
+    <div class="content-box">
+      <div class="info-note">
+        🤝 BoursesMonde est géré bénévolement par un particulier anonyme. Les réponses peuvent prendre quelques jours.
+      </div>
+
+      <div class="contact-info-grid">
+        <div class="contact-info-card">
+          <div class="icon">📧</div>
+          <h4>Email</h4>
+          <p><a href="mailto:boursesmonde@gmail.com">boursesmonde@gmail.com</a></p>
+        </div>
+        <div class="contact-info-card">
+          <div class="icon">🌍</div>
+          <h4>Localisation</h4>
+          <p>Éditeur indépendant anonyme</p>
+        </div>
+        <div class="contact-info-card">
+          <div class="icon">🕐</div>
+          <h4>Délai de réponse</h4>
+          <p>3-5 jours</p>
+        </div>
+        <div class="contact-info-card">
+          <div class="icon">💬</div>
+          <h4>Langues</h4>
+          <p>Français, Anglais</p>
+        </div>
+      </div>
+
+      <h2>Envoyez-nous un message</h2>
+      <p style="text-align:center; font-size:.95rem; margin-bottom: 20px;">
+        Ou écrivez directement à <a href="mailto:boursesmonde@gmail.com" class="inline-link"><strong>boursesmonde@gmail.com</strong></a>
+      </p>
+
+      <form class="contact-form" id="contactForm" onsubmit="envoyerContact(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nom">Nom ou pseudonyme *</label>
+            <input type="text" id="nom" name="nom" placeholder="Votre nom" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="votre@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="pays">Pays de résidence</label>
+            <input type="text" id="pays" name="pays" placeholder="Ex : France, Canada...">
+          </div>
+          <div class="form-group">
+            <label for="sujet">Sujet *</label>
+            <select id="sujet" name="sujet" required>
+              <option value="">-- Choisir --</option>
+              <option value="Question sur une bourse">Question sur une bourse</option>
+              <option value="Signaler une erreur">Signaler une erreur</option>
+              <option value="Proposer une bourse">Proposer une bourse</option>
+              <option value="Conseil ou aide">Conseil ou aide</option>
+              <option value="Remerciement">Remerciement</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" placeholder="Décrivez votre demande..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">📨 Envoyer</button>
+
+        <div class="success-msg" id="successMsg">
+          ✅ Merci ! Votre message a bien été envoyé. 🎓
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>🎓 BoursesMonde</h4>
+      <p style="font-size:.9rem;">Projet personnel et bénévole pour aider les étudiants à trouver des bourses d'études 2027-2028. Aucun but lucratif.</p>
+      <p style="font-size:.9rem; margin-top:10px;">
+        📧 <a href="mailto:boursesmonde@gmail.com" class="email-link">boursesmonde@gmail.com</a>
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a onclick="navigate('accueil')">Accueil</a></li>
+        <li><a onclick="navigate('bourses')">Toutes les bourses</a></li>
+        <li><a onclick="navigate('mentions')">Mentions légales</a></li>
+        <li><a onclick="navigate('confidentialite')">Confidentialité</a></li>
+        <li><a onclick="navigate('contact')">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Pays populaires</h4>
+      <ul>
+        <li><a onclick="navigateVersPays('France')">Bourses en France</a></li>
+        <li><a onclick="navigateVersPays('Canada')">Bourses au Canada</a></li>
+        <li><a onclick="navigateVersPays('Chine')">Bourses en Chine</a></li>
+        <li><a onclick="navigateVersPays('États-Unis')">Bourses aux USA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Légal</h4>
+      <ul>
+        <li><a onclick="navigate('mentions')">Mentions légales</a></li>
+        <li><a onclick="navigate('confidentialite')">Confidentialité</a></li>
+        <li><a onclick="navigate('contact')">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 BoursesMonde — Projet bénévole et indépendant. Les dates limites sont indicatives, vérifiez toujours sur le site officiel.
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   SLUGIFY
+   ============================================================ */
+function slugify(texte) {
+  return texte.toString().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '').trim()
+    .replace(/\s+/g, '-').replace(/-+/g, '-');
+}
+
+/* ============================================================
+   BASE DE DONNÉES
+   ============================================================ */
+const boursesBrutes = [
+  { titre: "Bourse Eiffel Excellence 2027-2028", pays: "France", drapeau: "🇫🇷", type: "Gouvernement", niveau: "Master / Doctorat", montant: "1 250 €/mois", deadline: "10 janvier 2027", description: "Bourse du gouvernement français pour attirer les meilleurs étudiants étrangers dans les établissements français.", lien: "https://www.campusfrance.org/fr/eiffel" },
+  { titre: "Bourse Émile Boutmy 2027-2028", pays: "France", drapeau: "🇫🇷", type: "Université", niveau: "Licence / Master", montant: "Jusqu'à 13 000 €/an", deadline: "15 février 2027", description: "Sciences Po attribue des bourses d'excellence aux étudiants internationaux pour la rentrée 2027.", lien: "https://www.sciencespo.fr/students/en/financial-aid/scholarships/emile-boutmy-scholarship" },
+  { titre: "Bourse Bachelor de l'École Polytechnique 2027", pays: "France", drapeau: "🇫🇷", type: "Université", niveau: "Licence", montant: "Frais + allocation", deadline: "15 mars 2027", description: "Bourse pour le Bachelor of Science de l'École Polytechnique destinée aux étudiants internationaux.", lien: "https://www.polytechnique.edu/en/admission/bachelor-program/scholarships" },
+  { titre: "Bourse HEC Paris 2027-2028", pays: "France", drapeau: "🇫🇷", type: "Université", niveau: "Master", montant: "Jusqu'à 50 % des frais", deadline: "28 février 2027", description: "HEC Paris propose des bourses au mérite pour les étudiants du Master in Management.", lien: "https://www.hec.edu/en/programs/master-in-management/admissions/scholarships" },
+  { titre: "Bourse Vanier Canada 2027-2028", pays: "Canada", drapeau: "🇨🇦", type: "Gouvernement", niveau: "Doctorat", montant: "50 000 $/an", deadline: "1 novembre 2026", description: "L'une des bourses les plus prestigieuses au Canada pour les doctorants internationaux.", lien: "https://vanier.gc.ca" },
+  { titre: "Lester B. Pearson International Scholarship 2027", pays: "Canada", drapeau: "🇨🇦", type: "Université", niveau: "Licence", montant: "Frais + résidence + livres", deadline: "15 novembre 2026", description: "Bourse de l'Université de Toronto pour étudiants internationaux exceptionnels.", lien: "https://future.utoronto.ca/pearson/" },
+  { titre: "UBC International Scholars Program 2027", pays: "Canada", drapeau: "🇨🇦", type: "Université", niveau: "Licence", montant: "Jusqu'à 60 000 $", deadline: "15 novembre 2026", description: "Programme de bourses de l'Université de la Colombie-Britannique.", lien: "https://you.ubc.ca/financial-planning/scholarships-awards/international-scholarships/" },
+  { titre: "Fulbright Foreign Student Program 2027-2028", pays: "États-Unis", drapeau: "🇺🇸", type: "Gouvernement", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "Variable selon pays (oct. 2026)", description: "Programme d'échange du gouvernement américain pour les étudiants internationaux.", lien: "https://foreign.fulbrightonline.org" },
+  { titre: "Knight-Hennessy Scholars 2027", pays: "États-Unis", drapeau: "🇺🇸", type: "Université", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "8 octobre 2026", description: "Bourse de l'Université Stanford pour les futurs leaders mondiaux.", lien: "https://knight-hennessy.stanford.edu" },
+  { titre: "AAUW International Fellowships 2027", pays: "États-Unis", drapeau: "🇺🇸", type: "Organisme privé", niveau: "Master / Doctorat / Post-doc", montant: "18 000 à 30 000 $", deadline: "15 novembre 2026", description: "Bourses pour les femmes internationales poursuivant des études aux États-Unis.", lien: "https://www.aauw.org/resources/programs/fellowships-grants/" },
+  { titre: "Ford Foundation Fellowship 2027", pays: "États-Unis", drapeau: "🇺🇸", type: "Organisme privé", niveau: "Doctorat / Post-doc", montant: "Jusqu'à 45 000 $/an", deadline: "Décembre 2026", description: "Programme de bourses pour les chercheurs issus de minorités.", lien: "https://www.nationalacademies.org/ford-foundation-fellowships" },
+  { titre: "Google PhD Fellowship 2027", pays: "États-Unis", drapeau: "🇺🇸", type: "Organisme privé", niveau: "Doctorat", montant: "Jusqu'à 70 000 $", deadline: "Variable (nov. 2026)", description: "Bourse de Google pour les doctorants en informatique.", lien: "https://research.google/programs-and-events/phd-fellowship/" },
+  { titre: "Microsoft Research PhD Fellowship 2027", pays: "États-Unis", drapeau: "🇺🇸", type: "Organisme privé", niveau: "Doctorat", montant: "Frais + allocation", deadline: "Variable (oct. 2026)", description: "Bourse de Microsoft Research pour les doctorants en informatique.", lien: "https://www.microsoft.com/en-us/research/academic-program/phd-fellowship/" },
+  { titre: "Chevening Scholarships 2027-2028", pays: "Royaume-Uni", drapeau: "🇬🇧", type: "Gouvernement", niveau: "Master", montant: "Frais + allocation", deadline: "5 novembre 2026", description: "Programme du gouvernement britannique finançant un master pour futurs leaders.", lien: "https://www.chevening.org" },
+  { titre: "Rhodes Scholarship 2027", pays: "Royaume-Uni", drapeau: "🇬🇧", type: "Université", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "2 octobre 2026", description: "Bourse prestigieuse de l'Université d'Oxford.", lien: "https://www.rhodeshouse.ox.ac.uk" },
+  { titre: "Gates Cambridge Scholarship 2027", pays: "Royaume-Uni", drapeau: "🇬🇧", type: "Université", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "3 décembre 2026 / 5 janvier 2027", description: "Bourse de l'Université de Cambridge pour étudiants internationaux.", lien: "https://www.gatescambridge.org" },
+  { titre: "DAAD Scholarships 2027-2028", pays: "Allemagne", drapeau: "🇩🇪", type: "Gouvernement", niveau: "Master / Doctorat", montant: "1 050 €/mois", deadline: "Variable selon programme", description: "Le DAAD offre des bourses aux étudiants et chercheurs étrangers en Allemagne.", lien: "https://www.daad.de/en/" },
+  { titre: "Heinrich Böll Foundation Scholarships 2027", pays: "Allemagne", drapeau: "🇩🇪", type: "Organisme privé", niveau: "Licence / Master / Doctorat", montant: "Jusqu'à 900 €/mois", deadline: "1 mars 2027", description: "Bourses pour étudiants engagés écologiquement et socialement.", lien: "https://www.boell.de/en/scholarships" },
+  { titre: "Konrad-Adenauer-Stiftung Scholarships 2027", pays: "Allemagne", drapeau: "🇩🇪", type: "Organisme privé", niveau: "Master / Doctorat", montant: "Jusqu'à 900 €/mois", deadline: "15 janvier 2027", description: "Bourses de la fondation Konrad-Adenauer.", lien: "https://www.kas.de/en/scholarships" },
+  { titre: "TU Munich Scholarships 2027", pays: "Allemagne", drapeau: "🇩🇪", type: "Université", niveau: "Master", montant: "Variable", deadline: "31 janvier 2027", description: "Bourses de l'Université technique de Munich.", lien: "https://www.tum.de/en/studies/fees-and-financial-aid/scholarships" },
+  { titre: "VLIR-UOS Scholarships 2027-2028", pays: "Belgique", drapeau: "🇧🇪", type: "Gouvernement", niveau: "Master", montant: "Frais + subsistance", deadline: "1 février 2027", description: "Bourses pour étudiants de pays en développement souhaitant étudier en Flandre.", lien: "https://www.vliruos.be" },
+  { titre: "UCLouvain Scholarships 2027-2028", pays: "Belgique", drapeau: "🇧🇪", type: "Université", niveau: "Master", montant: "Variable", deadline: "28 février 2027", description: "Bourses de l'Université catholique de Louvain.", lien: "https://uclouvain.be/en/study/scholarships" },
+  { titre: "Swiss Government Excellence Scholarships 2027-2028", pays: "Suisse", drapeau: "🇨🇭", type: "Gouvernement", niveau: "Doctorat / Post-doc", montant: "1 950 CHF/mois", deadline: "Variable (nov. 2026)", description: "Bourses de recherche pour chercheurs étrangers en Suisse.", lien: "https://www.sbfi.admin.ch/scholarships" },
+  { titre: "ETH Zurich Excellence Scholarship 2027", pays: "Suisse", drapeau: "🇨🇭", type: "Université", niveau: "Master", montant: "12 000 CHF + frais", deadline: "15 décembre 2026", description: "Bourse d'excellence de l'ETH Zurich.", lien: "https://ethz.ch/en/studies/financial/scholarships/excellence-scholarship.html" },
+  { titre: "EPFL Excellence Fellowship 2027", pays: "Suisse", drapeau: "🇨🇭", type: "Université", niveau: "Master", montant: "Jusqu'à 32 000 CHF", deadline: "15 décembre 2026", description: "Bourse d'excellence de l'EPFL.", lien: "https://www.epfl.ch/education/master/programs/excellence-fellowship/" },
+  { titre: "Orange Knowledge Programme 2027", pays: "Pays-Bas", drapeau: "🇳🇱", type: "Gouvernement", niveau: "Master / Formation", montant: "Frais + subsistance", deadline: "Variable (fév. 2027)", description: "Programme de bourses du gouvernement néerlandais.", lien: "https://www.nuffic.nl/education-programmes/orange-knowledge-programme" },
+  { titre: "Amsterdam Merit Scholarship 2027", pays: "Pays-Bas", drapeau: "🇳🇱", type: "Université", niveau: "Master", montant: "Jusqu'à 25 000 €", deadline: "1 février 2027", description: "Bourse de l'Université d'Amsterdam.", lien: "https://www.uva.nl/en/education/master-s/scholarships/amsterdam-merit-scholarship/amsterdam-merit-scholarship.html" },
+  { titre: "Swedish Institute Scholarships 2027-2028", pays: "Suède", drapeau: "🇸🇪", type: "Gouvernement", niveau: "Master", montant: "Frais + allocation", deadline: "15 février 2027", description: "Bourses de l'Institut suédois pour un master en Suède.", lien: "https://si.se/en/apply/scholarships/" },
+  { titre: "Bourse MEXT 2027-2028", pays: "Japon", drapeau: "🇯🇵", type: "Gouvernement", niveau: "Licence / Master / Doctorat", montant: "150 000 ¥/mois", deadline: "Variable selon ambassade (mai 2027)", description: "Bourse du gouvernement japonais pour étudiants internationaux.", lien: "https://www.studyinjapan.go.jp/en/smap-stopj-applications-scholarship.html" },
+  { titre: "Bourse CSC (Chinese Government Scholarship) 2027-2028", pays: "Chine", drapeau: "🇨🇳", type: "Gouvernement", niveau: "Licence / Master / Doctorat", montant: "Frais + 2 500-3 500 ¥/mois", deadline: "Avril 2027", description: "Bourse complète du Chinese Scholarship Council (CSC).", lien: "https://www.campuschina.org" },
+  { titre: "Bourse Confucius Institute (CIS) 2027-2028", pays: "Chine", drapeau: "🇨🇳", type: "Gouvernement", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation mensuelle", deadline: "Variable (mars-mai 2027)", description: "Bourses du Confucius Institute pour l'apprentissage du chinois.", lien: "https://cis.chinese.cn" },
+  { titre: "Chinese Government Special Scholarship – University Program 2027", pays: "Chine", drapeau: "🇨🇳", type: "Gouvernement", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (janv.-avril 2027)", description: "Programme de bourses attribué directement par les universités chinoises.", lien: "https://www.campuschina.org" },
+  { titre: "Tsinghua University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation + logement", deadline: "Variable (déc. 2026 - mars 2027)", description: "Bourse complète de l'Université Tsinghua.", lien: "https://www.tsinghua.edu.cn/en/Admissions/Scholarships.htm" },
+  { titre: "Peking University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation + logement", deadline: "Variable (janv.-mars 2027)", description: "Bourse de l'Université de Pékin.", lien: "https://www.isd.pku.edu.cn/en/" },
+  { titre: "Fudan University International Student Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (fév.-avril 2027)", description: "Programme de bourses de l'Université Fudan.", lien: "https://iso.fudan.edu.cn/iso_en/" },
+  { titre: "Zhejiang University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation + logement", deadline: "Variable (janv.-avril 2027)", description: "Bourse de l'Université de Zhejiang.", lien: "https://iczu.zju.edu.cn/iczuen/" },
+  { titre: "Shanghai Jiao Tong University Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation + logement", deadline: "Variable (déc. 2026 - mars 2027)", description: "Bourse de l'Université Jiao Tong de Shanghai.", lien: "https://isc.sjtu.edu.cn/en/" },
+  { titre: "Wuhan University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (mars-mai 2027)", description: "Bourse de l'Université de Wuhan.", lien: "https://admission.whu.edu.cn/en/" },
+  { titre: "Nanjing University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (janv.-avril 2027)", description: "Bourse de l'Université de Nanjing.", lien: "https://iso.nju.edu.cn/" },
+  { titre: "Sun Yat-sen University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (fév.-avril 2027)", description: "Bourse de l'Université Sun Yat-sen.", lien: "https://iso.sysu.edu.cn/en/" },
+  { titre: "Harbin Institute of Technology Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (déc. 2026 - mars 2027)", description: "Bourse de l'Institut de technologie de Harbin.", lien: "https://study.hit.edu.cn/" },
+  { titre: "Tianjin University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (janv.-avril 2027)", description: "Bourse de l'Université de Tianjin.", lien: "https://sie.tju.edu.cn/en/" },
+  { titre: "Xi'an Jiaotong University International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Licence / Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (fév.-avril 2027)", description: "Bourse de l'Université Jiaotong de Xi'an.", lien: "https://sie.xjtu.edu.cn/en/" },
+  { titre: "Beihang University (BUAA) International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Université", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (janv.-mars 2027)", description: "Bourse de l'Université Beihang.", lien: "https://is.buaa.edu.cn/" },
+  { titre: "Huawei Seeds for the Future Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Licence / Master", montant: "Frais + stage + allocation", deadline: "Variable (mars-juin 2027)", description: "Programme de Huawei offrant bourses et stages.", lien: "https://www.huawei.com/en/seeds-for-the-future" },
+  { titre: "Alibaba Global Leadership Academy (AGLA) 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Master / Jeunes diplômés", montant: "Frais + salaire + logement", deadline: "Variable (nov. 2026 - janv. 2027)", description: "Programme de bourses et leadership d'Alibaba.", lien: "https://agla.alibaba.com" },
+  { titre: "Tencent Rhino-Bird International Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Doctorat", montant: "Frais + allocation de recherche", deadline: "Variable (mars-mai 2027)", description: "Bourse de Tencent pour doctorants en IA.", lien: "https://www.tencent.com/en-us/" },
+  { titre: "Xiaomi Elite Scholarship Program 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (fév.-avril 2027)", description: "Programme de bourses de Xiaomi.", lien: "https://www.mi.com/global/" },
+  { titre: "Baidu AI Talent Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (mars-mai 2027)", description: "Bourse de Baidu pour étudiants en IA.", lien: "https://research.baidu.com/" },
+  { titre: "ByteDance Scholarship Program 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Master / Doctorat", montant: "Frais + allocation de recherche", deadline: "Variable (avril-juin 2027)", description: "Bourse de ByteDance (TikTok) pour étudiants en informatique.", lien: "https://www.bytedance.com/en/" },
+  { titre: "Samsung China Scholarship 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "Variable (mars-mai 2027)", description: "Bourse de Samsung Chine.", lien: "https://www.samsung.com/cn/" },
+  { titre: "Schwarzman Scholars (Tsinghua) 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Master", montant: "Frais + logement + allocation", deadline: "Variable (avril-sept. 2026)", description: "Programme de bourses privé à l'Université Tsinghua.", lien: "https://www.schwarzmanscholars.org" },
+  { titre: "Yenching Academy (Peking University) 2027", pays: "Chine", drapeau: "🇨🇳", type: "Organisme privé", niveau: "Master", montant: "Frais + allocation + logement", deadline: "Variable (déc. 2026 - janv. 2027)", description: "Programme de bourses à l'Université de Pékin.", lien: "https://yenchingacademy.pku.edu.cn" },
+  { titre: "Australia Awards 2027-2028", pays: "Australie", drapeau: "🇦🇺", type: "Gouvernement", niveau: "Master / Doctorat", montant: "Complète", deadline: "Variable selon pays (avril 2027)", description: "Bourses du gouvernement australien pour étudiants de pays en développement.", lien: "https://www.australiaawards.gov.au" },
+  { titre: "University of Melbourne Graduate Research Scholarships 2027", pays: "Australie", drapeau: "🇦🇺", type: "Université", niveau: "Master / Doctorat", montant: "Frais + allocation", deadline: "31 octobre 2026", description: "Bourses de recherche de l'Université de Melbourne.", lien: "https://scholarships.unimelb.edu.au" },
+  { titre: "Erasmus Mundus Joint Masters 2027-2028", pays: "Union Européenne", drapeau: "🇪🇺", type: "Gouvernement", niveau: "Master", montant: "Jusqu'à 26 000 €", deadline: "Variable selon programme (jan. 2027)", description: "Programme de master conjoint dans plusieurs universités européennes.", lien: "https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters-scholarships" },
+  { titre: "MasterCard Foundation Scholars Program 2027", pays: "International", drapeau: "🌍", type: "Organisme privé", niveau: "Licence / Master", montant: "Complète", deadline: "Variable selon université", description: "Programme de bourses pour jeunes talents africains.", lien: "https://mastercardfdn.org/all/scholars/" },
+  { titre: "Rotary Foundation Global Grant Scholarships 2027", pays: "International", drapeau: "🌍", type: "Organisme privé", niveau: "Master / Doctorat", montant: "À partir de 30 000 $", deadline: "Variable selon district", description: "Bourses de la Fondation Rotary pour des études à l'étranger.", lien: "https://www.rotary.org/en/our-programs/global-grants" },
+  { titre: "Aga Khan Foundation International Scholarship 2027", pays: "International", drapeau: "🌍", type: "Organisme privé", niveau: "Master / Doctorat", montant: "Frais + subsistance", deadline: "31 mars 2027", description: "Bourses pour étudiants de pays en développement.", lien: "https://www.akdn.org/our-agencies/aga-khan-foundation/international-scholarship-programme" },
+  { titre: "Margaret McNamara Education Grants 2027", pays: "International", drapeau: "🌍", type: "Organisme privé", niveau: "Master / Doctorat", montant: "Jusqu'à 15 000 $", deadline: "15 janvier 2027", description: "Bourses pour les femmes de pays en développement.", lien: "https://www.mmeg.org" },
+  { titre: "PEO International Peace Scholarship 2027", pays: "International", drapeau: "🌍", type: "Organisme privé", niveau: "Master / Doctorat", montant: "12 500 $", deadline: "15 décembre 2026", description: "Bourse pour les femmes internationales poursuivant des études supérieures.", lien: "https://www.peointernational.org/peo-international-peace-scholarship" }
+];
+
+const bourses = boursesBrutes.map(b => ({ ...b, slug: slugify(b.titre) }));
+
+let paysActif = "Tous";
+const PAGES_VALIDES = ['accueil', 'bourses', 'bourse-detail', 'mentions', 'confidentialite', 'contact'];
+
+/* ============================================================
+   CONSTRUCTION DES FILTRES
+   ============================================================ */
+function construireFiltres() {
+  const filterBox = document.getElementById('countryFilter');
+  if (!filterBox) return;
+
+  const pays = [...new Set(bourses.map(b => b.pays))].sort();
+  const tous = ['Tous', ...pays];
+
+  filterBox.innerHTML = tous.map(p => {
+    const drapeau = p === 'Tous' ? '🌍' : (bourses.find(b => b.pays === p)?.drapeau || '');
+    const escaped = p.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    return `<button class="country-btn ${p === 'Tous' ? 'active' : ''}"
+                    data-pays="${p.replace(/"/g, '&quot;')}"
+                    onclick="filtrerPays('${escaped}')">${drapeau} ${p}</button>`;
+  }).join('');
+
+  const totalB = document.getElementById('totalBourses');
+  const totalP = document.getElementById('totalPays');
+  if (totalB) totalB.textContent = bourses.length;
+  if (totalP) totalP.textContent = pays.length;
+}
+
+/* ============================================================
+   AFFICHAGE DES BOURSES
+   ============================================================ */
+function afficherBourses(liste) {
+  const grid = document.getElementById('boursesGrid');
+  if (!grid) return;
+
+  if (liste.length === 0) {
+    grid.innerHTML = `<div class="empty"><h3>Aucune bourse trouvée</h3><p>Essayez un autre mot-clé ou un autre pays.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = liste.map(b => `
+    <article class="card">
+      <div class="card-top">
+        <span class="flag">${b.drapeau}</span>
+        <div>
+          <div class="card-country">${b.pays}</div>
+          <div class="card-level">${b.niveau}</div>
+        </div>
+      </div>
+      <h3>${b.titre}</h3>
+      <p class="card-desc">${b.description}</p>
+      <div class="card-meta">
+        <span class="tag type">${b.type}</span>
+        <span class="tag amount">💰 ${b.montant}</span>
+        <span class="tag deadline">⏰ ${b.deadline}</span>
+      </div>
+      <button class="card-btn" onclick="ouvrirBourseParSlug('${b.slug}')">Voir les détails →</button>
+    </article>
+  `).join('');
+}
+
+function filtrerPays(pays) {
+  paysActif = pays;
+  document.querySelectorAll('.country-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.pays === pays);
+  });
+  const searchBourses = document.getElementById('searchInput2');
+  const terme = searchBourses ? searchBourses.value.toLowerCase().trim() : '';
+  appliquerFiltres(terme);
+}
+
+function filtrer() {
+  const searchBourses = document.getElementById('searchInput2');
+  const terme = searchBourses ? searchBourses.value.toLowerCase().trim() : '';
+  appliquerFiltres(terme);
+}
+
+function appliquerFiltres(terme) {
+  let liste = bourses;
+  if (paysActif !== "Tous") liste = liste.filter(b => b.pays === paysActif);
+  if (terme) {
+    liste = liste.filter(b =>
+      b.titre.toLowerCase().includes(terme) ||
+      b.pays.toLowerCase().includes(terme) ||
+      b.description.toLowerCase().includes(terme) ||
+      b.niveau.toLowerCase().includes(terme) ||
+      b.type.toLowerCase().includes(terme)
+    );
+  }
+  afficherBourses(liste);
+}
+
+/* ============================================================
+   NOTIFICATION DE REDIRECTION
+   ============================================================ */
+function afficherNotificationRedirection() {
+  const ancienne = document.getElementById('redirectNotice');
+  if (ancienne) ancienne.remove();
+
+  const notice = document.createElement('div');
+  notice.id = 'redirectNotice';
+  notice.innerHTML = `
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div style="font-size:1.8rem;">🌐</div>
+      <div>
+        <div style="font-weight:800; margin-bottom:2px;">Redirection en cours...</div>
+        <div style="font-size:.85rem; opacity:.9;">Vous allez être redirigé vers le site officiel. 🎓</div>
+      </div>
+    </div>
+  `;
+  notice.style.cssText = `
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, #1a4d8f, #2d6cdf);
+    color: white; padding: 16px 24px; border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    z-index: 9999; max-width: min(90%, 420px);
+    animation: slideDown .3s ease;
+  `;
+  document.body.appendChild(notice);
+}
+
+function redirigerVersSite(url) {
+  afficherNotificationRedirection();
+  setTimeout(() => { window.location.href = url; }, 1500);
+}
+
+/* ============================================================
+   OUVERTURE D'UNE BOURSE
+   ============================================================ */
+function ouvrirBourseParSlug(slug) {
+  const b = bourses.find(x => x.slug === slug);
+  if (!b) { navigate('bourses'); return; }
+
+  const container = document.getElementById('detailContent');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="detail-card">
+      <div class="detail-header">
+        <span class="detail-flag">${b.drapeau}</span>
+        <div>
+          <div class="detail-country">${b.pays}</div>
+          <h2 class="detail-title">${b.titre}</h2>
+          <div class="detail-level">🎓 ${b.niveau}</div>
+        </div>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-info">
+          <div class="detail-info-label">Type</div>
+          <div class="detail-info-value">${b.type}</div>
+        </div>
+        <div class="detail-info">
+          <div class="detail-info-label">💰 Montant</div>
+          <div class="detail-info-value">${b.montant}</div>
+        </div>
+        <div class="detail-info">
+          <div class="detail-info-label">⏰ Date limite</div>
+          <div class="detail-info-value">${b.deadline}</div>
+        </div>
+      </div>
+
+      <div class="detail-description">
+        <strong>Description :</strong><br>${b.description}
+      </div>
+
+      <div class="detail-actions">
+        <a href="${b.lien}" class="btn-official" onclick="event.preventDefault(); redirigerVersSite('${b.lien}');">
+          🌐 Accéder au site officiel
+        </a>
+        <button class="btn-back" onclick="navigate('bourses')">← Retour aux bourses</button>
+      </div>
+
+      <div class="share-bar">
+        <span class="share-bar-label">📤 Partager cette bourse :</span>
+        <button class="share-btn" onclick="copierLien('${b.slug}')">🔗 Copier le lien</button>
+        <button class="share-btn" onclick="partagerEmail('${b.slug}', '${b.titre.replace(/'/g, "\\'")}')">✉️ Email</button>
+        <button class="share-btn" onclick="partagerWhatsApp('${b.slug}', '${b.titre.replace(/'/g, "\\'")}')">💬 WhatsApp</button>
+      </div>
+
+      <div class="detail-note">
+        ⚠️ <strong>Important :</strong> BoursesMonde n'attribue aucune bourse. Vous allez être redirigé vers le site officiel. Vérifiez toujours les conditions et dates limites.
+      </div>
+    </div>
+  `;
+
+  const newHash = '#bourse-' + b.slug;
+  if (history.replaceState) history.replaceState(null, '', newHash);
+  else window.location.hash = 'bourse-' + b.slug;
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-bourse-detail');
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('nav a[data-nav]').forEach(a => a.classList.remove('active'));
+
+  const navMenu = document.getElementById('navMenu');
+  if (navMenu) navMenu.classList.remove('open');
+  const menuToggle = document.getElementById('menuToggle');
+  if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  setTimeout(() => {
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+  }, 100);
+}
+
+/* ============================================================
+   PARTAGE
+   ============================================================ */
+function getUrlForSlug(slug) {
+  return window.location.href.split('#')[0] + '#bourse-' + slug;
+}
+
+function copierLien(slug) {
+  const url = getUrlForSlug(slug);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url)
+      .then(() => alert('✅ Lien copié !\n\n' + url))
+      .catch(() => prompt('Copiez ce lien :', url));
+  } else {
+    prompt('Copiez ce lien :', url);
+  }
+}
+
+function partagerEmail(slug, titre) {
+  const url = getUrlForSlug(slug);
+  const subject = encodeURIComponent('Bourse intéressante : ' + titre);
+  const body = encodeURIComponent('Bonjour,\n\nJe te partage cette bourse :\n\n' + titre + '\n\n' + url + '\n\nBonne chance !');
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+}
+
+function partagerWhatsApp(slug, titre) {
+  const url = getUrlForSlug(slug);
+  const texte = encodeURIComponent('🎓 ' + titre + '\n\n' + url);
+  window.open('https://wa.me/?text=' + texte, '_blank');
+}
+
+/* ============================================================
+   NAVIGATION SPA
+   ============================================================ */
+function navigate(pageId) {
+  if (!PAGES_VALIDES.includes(pageId)) pageId = 'accueil';
+
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + pageId);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('nav a[data-nav]').forEach(a => {
+    a.classList.toggle('active', a.dataset.nav === pageId);
+  });
+
+  const navMenu = document.getElementById('navMenu');
+  if (navMenu) navMenu.classList.remove('open');
+  const menuToggle = document.getElementById('menuToggle');
+  if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  if (history.replaceState) history.replaceState(null, '', '#' + pageId);
+  else window.location.hash = pageId;
+}
+
+function navigateVersPays(pays) {
+  navigate('bourses');
+  setTimeout(() => filtrerPays(pays), 120);
+}
+
+function rechercherDepuisAccueil() {
+  const searchHome = document.getElementById('searchInput');
+  const terme = searchHome ? searchHome.value : '';
+  navigate('bourses');
+  setTimeout(() => {
+    const searchBourses = document.getElementById('searchInput2');
+    if (searchBourses) { searchBourses.value = terme; filtrer(); }
+  }, 120);
+}
+
+function envoyerContact(event) {
+  event.preventDefault();
+  const successMsg = document.getElementById('successMsg');
+  if (successMsg) {
+    successMsg.style.display = 'block';
+    setTimeout(() => { successMsg.style.display = 'none'; }, 6000);
+  }
+  const form = document.getElementById('contactForm');
+  if (form) form.reset();
+}
+
+/* ============================================================
+   ROUTAGE PAR HASH
+   ============================================================ */
+function gererHash() {
+  const hash = window.location.hash.replace('#', '') || 'accueil';
+
+  if (hash.startsWith('bourse-')) {
+    const slug = hash.replace('bourse-', '');
+    const b = bourses.find(x => x.slug === slug);
+    if (b) { ouvrirBourseParSlug(slug); return; }
+    navigate('bourses');
+    return;
+  }
+
+  if (PAGES_VALIDES.includes(hash)) navigate(hash);
+  else navigate('accueil');
+}
+
+window.addEventListener('hashchange', gererHash);
+
+/* ============================================================
+   INITIALISATION + GESTION DU MENU MOBILE
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  construireFiltres();
+  afficherBourses(bourses);
+  gererHash();
+
+  const searchBourses = document.getElementById('searchInput2');
+  if (searchBourses) searchBourses.addEventListener('input', filtrer);
+
+  const searchHome = document.getElementById('searchInput');
+  if (searchHome) {
+    searchHome.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') rechercherDepuisAccueil();
+    });
+  }
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      const ouvert = navMenu.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+      menuToggle.textContent = ouvert ? '✕' : '☰';
+    });
+  }
+
+  /* Fermer le menu au clic à l'extérieur */
+  document.addEventListener('click', (e) => {
+    if (!navMenu || !menuToggle) return;
+    if (navMenu.classList.contains('open') &&
+        !navMenu.contains(e.target) &&
+        !menuToggle.contains(e.target)) {
+      navMenu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }
+  });
+
+  /* Fermer le menu sur redimensionnement */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('open')) {
+      navMenu.classList.remove('open');
+      if (menuToggle) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
