@@ -1943,39 +1943,84 @@ function appliquerFiltres(terme) {
 }
 
 /* ============================================================
-   NOTIFICATION DE REDIRECTION
+   NOTIFICATION DE REDIRECTION (avec fermeture automatique)
    ============================================================ */
+let redirectTimeout = null;
+let redirectCloseTimeout = null;
+
 function afficherNotificationRedirection() {
+  // Nettoyer les anciens timeouts
+  if (redirectTimeout) clearTimeout(redirectTimeout);
+  if (redirectCloseTimeout) clearTimeout(redirectCloseTimeout);
+
   const ancienne = document.getElementById('redirectNotice');
   if (ancienne) ancienne.remove();
 
   const notice = document.createElement('div');
   notice.id = 'redirectNotice';
   notice.innerHTML = `
-    <div style="display:flex; align-items:center; gap:14px;">
+    <div style="display:flex; align-items:center; gap:14px; width:100%;">
       <div style="font-size:1.8rem;">🌐</div>
-      <div>
+      <div style="flex:1;">
         <div style="font-weight:800; margin-bottom:2px;">Redirection en cours...</div>
         <div style="font-size:.85rem; opacity:.9;">Vous allez être redirigé vers le site officiel. 🎓</div>
       </div>
+      <button onclick="annulerRedirection()" 
+              style="background:rgba(255,255,255,0.2); border:none; color:white; 
+                     width:32px; height:32px; border-radius:50%; cursor:pointer; 
+                     font-size:1.1rem; display:grid; place-items:center; flex-shrink:0;"
+              aria-label="Annuler la redirection">✕</button>
     </div>
   `;
   notice.style.cssText = `
     position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
     background: linear-gradient(135deg, #1a4d8f, #2d6cdf);
-    color: white; padding: 16px 24px; border-radius: 12px;
+    color: white; padding: 14px 18px; border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-    z-index: 9999; max-width: min(90%, 420px);
+    z-index: 9999; max-width: min(92%, 460px); min-width: 280px;
     animation: slideDown .3s ease;
+    display: flex;
+    align-items: center;
   `;
   document.body.appendChild(notice);
+
+  // Fermer automatiquement après 5s si la redirection n'a pas eu lieu
+  redirectCloseTimeout = setTimeout(() => {
+    fermerNotification();
+  }, 5000);
+}
+
+function fermerNotification() {
+  const notice = document.getElementById('redirectNotice');
+  if (notice) {
+    notice.style.animation = 'fadeOut .3s ease';
+    setTimeout(() => notice.remove(), 300);
+  }
+}
+
+function annulerRedirection() {
+  if (redirectTimeout) clearTimeout(redirectTimeout);
+  if (redirectCloseTimeout) clearTimeout(redirectCloseTimeout);
+  fermerNotification();
 }
 
 function redirigerVersSite(url) {
   afficherNotificationRedirection();
-  setTimeout(() => { window.location.href = url; }, 1500);
+  redirectTimeout = setTimeout(() => {
+    window.location.href = url;
+  }, 1500);
 }
 
+/* Nettoyer la notification si l'utilisateur revient sur la page */
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) {
+    fermerNotification();
+  }
+});
+
+window.addEventListener('pageshow', () => {
+  fermerNotification();
+});
 /* ============================================================
    OUVERTURE D'UNE BOURSE
    ============================================================ */
