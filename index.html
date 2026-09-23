@@ -1328,6 +1328,129 @@
     a { color: black; text-decoration: underline; }
     a[href]::after { content: " (" attr(href) ")"; font-size: 9pt; color: #666; }
   }
+  
+  /* ============================================================
+     MOBILE - NAVIGATION HORIZONTALE (CORRECTION)
+     ============================================================ */
+  @media (max-width: 768px) {
+    /* Header avec navigation horizontale */
+    .header-inner {
+      padding: 10px 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .logo {
+      font-size: 1rem;
+      gap: 6px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 1rem;
+    }
+
+    /* Cacher le bouton hamburger */
+    .menu-toggle {
+      display: none !important;
+    }
+
+    /* Navigation horizontale scrollable */
+    nav {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-top: 4px;
+    }
+
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    nav ul {
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 4px;
+      padding: 6px 0;
+      background: transparent !important;
+      box-shadow: none !important;
+      position: static !important;
+      width: max-content;
+      min-width: 100%;
+      justify-content: flex-start;
+      border-top: none !important;
+    }
+
+    nav a {
+      font-size: 0.78rem;
+      padding: 8px 10px;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      border-left: none !important;
+      min-height: auto;
+      line-height: 1.2;
+      border-radius: 6px;
+    }
+
+    nav a.active {
+      border-left: none !important;
+      border-bottom-color: var(--primary);
+      padding-left: 10px;
+    }
+
+    /* Hero ajusté */
+    .hero { padding: 30px 16px 60px; }
+    .hero h1 { font-size: 1.3rem; }
+    .hero p { font-size: 0.88rem; }
+
+    /* Recherche empilée */
+    .search-box {
+      flex-direction: column;
+      border-radius: 16px;
+      padding: 8px;
+      gap: 6px;
+    }
+    .search-box input,
+    .search-box button { border-radius: 12px; width: 100%; }
+
+    /* Stats sur 3 colonnes */
+    .stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .stat { padding: 12px 6px; }
+    .stat-num { font-size: 1.3rem; }
+    .stat-label { font-size: 0.7rem; }
+
+    /* Container plus compact */
+    .container { padding: 30px 14px; }
+
+    /* Formulaire 1 colonne */
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Détails empilés */
+    .detail-header { flex-direction: column; text-align: center; }
+    .detail-actions { flex-direction: column; }
+    .btn-official, .btn-back { min-width: 100%; width: 100%; }
+
+    /* Newsletter empilée */
+    .newsletter { padding: 30px 18px; }
+    .newsletter form { flex-direction: column; }
+    .newsletter input,
+    .newsletter button { width: 100%; border-radius: 12px; }
+
+    /* Footer compact 2 colonnes */
+    .footer-inner {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 12px;
+      text-align: center;
+    }
+    .footer-col h4 { font-size: 0.88rem; }
+    .footer-col li { font-size: 0.8rem; margin-bottom: 5px; }
+    .footer-col a { text-align: center; }
+  }     
 </style>
 </head>
 <body>
