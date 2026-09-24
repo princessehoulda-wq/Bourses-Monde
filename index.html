@@ -1479,6 +1479,7 @@
         <li><a onclick="navigate('mentions')" data-nav="mentions">Mentions légales</a></li>
         <li><a onclick="navigate('confidentialite')" data-nav="confidentialite">Confidentialité</a></li>
         <li><a onclick="navigate('contact')" data-nav="contact">Contact</a></li>
+        <li><a onclick="navigate('avis')" data-nav="avis">Avis</a></li>
       </ul>
     </nav>
   </div>
@@ -1799,7 +1800,111 @@
   </div>
 </div>
 
-<!-- ============================================================
+<!-- 
+  <!-- ============================================================
+     PAGE : AVIS ET SUGGESTIONS
+     ============================================================ -->
+<div class="page" id="page-avis">
+
+  <section class="page-hero">
+    <h1>Avis et Suggestions</h1>
+    <p>Aidez-nous à améliorer BoursesMonde</p>
+  </section>
+
+  <div class="container">
+    <div class="content-box">
+
+      <div class="info-note">
+        💛 Votre avis est précieux ! Dites-nous ce que vous pensez du site, proposez des bourses, ou suggérez des améliorations.
+      </div>
+
+      <h2>📝 Laissez votre avis</h2>
+      <p>Tous les avis sont lus par notre équipe. Les meilleurs seront publiés ci-dessous.</p>
+
+      <form class="contact-form" action="https://formspree.io/f/mjykorwp" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="avis-nom">Votre nom *</label>
+            <input type="text" id="avis-nom" name="nom" placeholder="Votre nom ou pseudonyme" required>
+          </div>
+          <div class="form-group">
+            <label for="avis-email">Email *</label>
+            <input type="email" id="avis-email" name="email" placeholder="votre@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="avis-type">Type d'avis *</label>
+          <select id="avis-type" name="type" required>
+            <option value="">-- Choisir --</option>
+            <option value="Suggestion">💡 Suggestion d'amélioration</option>
+            <option value="Nouvelle bourse">🎓 Proposition de bourse</option>
+            <option value="Bug">🐛 Signaler un bug</option>
+            <option value="Témoignage">💬 Témoignage</option>
+            <option value="Autre">📝 Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="avis-message">Votre message *</label>
+          <textarea id="avis-message" name="message" placeholder="Partagez votre avis, suggestion ou témoignage..." required></textarea>
+        </div>
+
+        <div class="form-group" style="flex-direction: row; align-items: center; gap: 10px;">
+          <input type="checkbox" id="avis-consent" name="consent" required style="width: auto; min-height: auto;">
+          <label for="avis-consent" style="margin: 0;">J'accepte que mon avis soit publié sur le site</label>
+        </div>
+
+        <button type="submit" class="submit-btn">📨 Envoyer mon avis</button>
+      </form>
+
+      <p style="margin-top: 20px; font-size: 0.9rem; color: var(--gray);">
+        ⚠️ Votre email ne sera jamais publié. Il nous sert uniquement à vous répondre.
+      </p>
+
+      <hr style="margin: 40px 0; border: none; border-top: 2px solid #f1f5f9;">
+
+      <h2>⭐ Ce que disent nos visiteurs</h2>
+      <p>Voici quelques avis reçus. Merci pour vos retours !</p>
+
+      <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));">
+        
+        <div class="card" style="border-left: 4px solid var(--accent);">
+          <div style="display: flex; gap: 8px; margin-bottom: 8px; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
+          <p class="card-desc" style="font-style: italic; margin-bottom: 12px;">
+            "Super site ! J'ai trouvé la bourse Stipendium Hungaricum grâce à vous. Merci !"
+          </p>
+          <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary);">
+            — Marie, Gabon
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--accent);">
+          <div style="display: flex; gap: 8px; margin-bottom: 8px; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
+          <p class="card-desc" style="font-style: italic; margin-bottom: 12px;">
+            "Enfin un site clair et complet sur les bourses. Bravo pour ce projet !"
+          </p>
+          <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary);">
+            — Ibrahim, Cameroun
+          </div>
+        </div>
+
+        <div class="card" style="border-left: 4px solid var(--accent);">
+          <div style="display: flex; gap: 8px; margin-bottom: 8px; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
+          <p class="card-desc" style="font-style: italic; margin-bottom: 12px;">
+            "J'ai postulé à la bourse MEXT grâce à vos conseils. Site très utile !"
+          </p>
+          <div style="font-weight: 700; font-size: 0.9rem; color: var(--primary);">
+            — Aïcha, Sénégal
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+============================================================
      PAGE : CONTACT
      ============================================================ -->
 <div class="page" id="page-contact">
@@ -2500,7 +2605,7 @@ const boursesBrutes = [
 const bourses = boursesBrutes.map(b => ({ ...b, slug: slugify(b.titre) }));
 
 let paysActif = "Tous";
-const PAGES_VALIDES = ['accueil', 'bourses', 'bourse-detail', 'mentions', 'confidentialite', 'contact'];
+const PAGES_VALIDES = ['accueil', 'bourses', 'bourse-detail', 'mentions', 'confidentialite', 'contact', 'avis'];
 
 /* ============================================================
    CONSTRUCTION DES FILTRES
