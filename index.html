@@ -1480,6 +1480,7 @@
         <li><a onclick="navigate('confidentialite')" data-nav="confidentialite">Confidentialité</a></li>
         <li><a onclick="navigate('contact')" data-nav="contact">Contact</a></li>
         <li><a onclick="navigate('avis')" data-nav="avis">Avis</a></li>
+        <li><a onclick="navigate('prets')" data-nav="prets">Prêts</a></li>
       </ul>
     </nav>
   </div>
@@ -1801,6 +1802,86 @@
 </div>
 
 <!-- 
+  <!-- ============================================================
+     PAGE : PRÊTS ÉTUDIANTS
+     ============================================================ -->
+<div class="page" id="page-prets">
+
+  <section class="page-hero">
+    <h1>Prêts Étudiants</h1>
+    <p>Financez vos études à l'étranger — Découvrez les prêts adaptés à votre nationalité</p>
+  </section>
+
+  <div class="container">
+
+    <!-- AVERTISSEMENT IMPORTANT -->
+    <div style="background: #fee2e2; border-left: 6px solid #dc2626; padding: 20px 24px; border-radius: 12px; margin-bottom: 32px;">
+      <h3 style="color: #991b1b; margin-bottom: 12px; font-size: 1.15rem;">⚠️ AVERTISSEMENT IMPORTANT</h3>
+      <p style="color: #7f1d1d; font-size: 0.95rem; line-height: 1.6; margin-bottom: 10px;">
+        <strong>Un prêt étudiant est un engagement financier à long terme.</strong>
+      </p>
+      <ul style="color: #7f1d1d; font-size: 0.92rem; line-height: 1.7; padding-left: 20px;">
+        <li>📊 <strong>Vérifiez les taux d'intérêt</strong> (fixes ou variables)</li>
+        <li>💰 <strong>Calculez le coût total</strong> avant de signer</li>
+        <li>📅 <strong>Évaluez votre capacité de remboursement</strong> après vos études</li>
+        <li>⚖️ <strong>Comparez plusieurs offres</strong> avant de vous engager</li>
+        <li>🌍 <strong>Vérifiez la législation</strong> de votre pays de résidence</li>
+        <li>📞 <strong>Consultez un conseiller financier</strong> si nécessaire</li>
+      </ul>
+      <p style="color: #7f1d1d; font-size: 0.9rem; margin-top: 12px; font-style: italic;">
+        BoursesMonde n'est PAS un prêteur. Nous recensons uniquement les organismes existants. Vérifiez toujours les conditions sur le site officiel.
+      </p>
+    </div>
+
+    <!-- FILTRES PAR NATIONALITÉ -->
+    <h2 class="section-title">🌍 Filtrer par nationalité</h2>
+    <p class="section-sub">Sélectionnez votre région pour voir les prêts disponibles</p>
+
+    <div class="country-filter" id="filterPrets">
+      <button class="country-btn active" data-region="Tous" onclick="filtrerPrets('Tous')">🌍 Tous</button>
+      <button class="country-btn" data-region="Afrique" onclick="filtrerPrets('Afrique')">🌍 Afrique</button>
+      <button class="country-btn" data-region="Europe" onclick="filtrerPrets('Europe')">🇪🇺 Europe</button>
+      <button class="country-btn" data-region="Asie" onclick="filtrerPrets('Asie')">🌏 Asie</button>
+      <button class="country-btn" data-region="Amérique" onclick="filtrerPrets('Amérique')">🌎 Amérique</button>
+      <button class="country-btn" data-region="International" onclick="filtrerPrets('International')">🌐 International</button>
+    </div>
+
+    <!-- GRILLE DES PRÊTS -->
+    <div class="grid" id="gridPrets"></div>
+
+    <!-- CONSEILS -->
+    <div class="content-box" style="margin-top: 50px;">
+      <h2>💡 Conseils avant de contracter un prêt</h2>
+
+      <h3 style="margin-top: 20px; color: var(--primary);">1. Évaluez le coût total</h3>
+      <p>Un prêt de 30 000 € à 8% sur 10 ans coûte <strong>~13 000 € d'intérêts</strong>. Le coût réel est de 43 000 €.</p>
+
+      <h3 style="margin-top: 20px; color: var(--primary);">2. Comparez les taux</h3>
+      <p>Un écart de 2% peut représenter <strong>plusieurs milliers d'euros</strong> sur la durée totale du prêt.</p>
+
+      <h3 style="margin-top: 20px; color: var(--primary);">3. Vérifiez les conditions de remboursement</h3>
+      <ul>
+        <li>📅 <strong>Période de grâce</strong> : Combien de temps avant de commencer à rembourser ?</li>
+        <li>📊 <strong>Montant mensuel</strong> : Est-il compatible avec votre futur salaire ?</li>
+        <li>⚖️ <strong>Clause de différé</strong> : Que se passe-t-il si vous ne trouvez pas d'emploi ?</li>
+      </ul>
+
+      <h3 style="margin-top: 20px; color: var(--primary);">4. Explorez d'abord les bourses</h3>
+      <p><strong>Un prêt est un dernier recours.</strong> Cherchez d'abord :</p>
+      <ul>
+        <li>🎓 Les bourses complètes (Stipendium Hungaricum, MEXT, Eiffel...)</li>
+        <li>🏫 Les aides des universités</li>
+        <li>🌍 Les programmes gouvernementaux</li>
+        <li>💼 Les jobs étudiants</li>
+      </ul>
+
+      <div class="info-note" style="margin-top: 24px;">
+        💛 <strong>Rappel :</strong> BoursesMonde est un projet bénévole. Nous ne gagnons rien sur ces prêts. Nous vous informons pour vous aider à faire un choix éclairé.
+      </div>
+    </div>
+
+  </div>
+</div>
   <!-- ============================================================
      PAGE : AVIS ET SUGGESTIONS
      ============================================================ -->
@@ -2605,11 +2686,87 @@ const boursesBrutes = [
 const bourses = boursesBrutes.map(b => ({ ...b, slug: slugify(b.titre) }));
 
 let paysActif = "Tous";
-const PAGES_VALIDES = ['accueil', 'bourses', 'bourse-detail', 'mentions', 'confidentialite', 'contact', 'avis'];
+/* ============================================================
+   DONNÉES DES PRÊTS ÉTUDIANTS
+   ============================================================ */
+const prets = [
+  { nom: "8B Education Investments", region: "Afrique", nationalites: "Étudiants africains (Afrique subsaharienne)", paysEtude: "USA, Canada, Royaume-Uni, Europe", ecoles: "Plus de 200 universités partenaires (dont Harvard, MIT, Oxford, Toronto...)", montant: "Jusqu'à 100% des frais + subsistance", taux: "À partir de 8% (variable selon profil)", duree: "10-15 ans", devise: "USD / GBP / EUR", description: "Prêt spécialement conçu pour les étudiants africains. Ne nécessite PAS de garant et prend en compte le potentiel de carrière.", lien: "https://www.8b.education" },
+  { nom: "Prodigy Finance", region: "Afrique", nationalites: "Africains, Asiatiques, Latino-Américains (pays émergents)", paysEtude: "USA, Canada, Royaume-Uni, Europe, Australie", ecoles: "Plus de 750 universités partenaires (Harvard, Stanford, INSEAD, LBS...)", montant: "Jusqu'à 100% des frais de scolarité + subsistance", taux: "À partir de 6,5% (fixe, selon profil)", duree: "7-15 ans", devise: "USD / GBP / EUR / CAD / AUD", description: "Prêt sans garant, basé sur le potentiel de revenus futurs. Idéal pour les masters et MBA dans les meilleures universités mondiales.", lien: "https://www.prodigyfinance.com" },
+  { nom: "MPOWER Financing", region: "Afrique", nationalites: "Africains, Asiatiques, Latinos (candidats internationaux)", paysEtude: "USA, Canada", ecoles: "Plus de 400 universités partenaires aux USA et Canada", montant: "Jusqu'à 100 000 USD", taux: "À partir de 7,99% (fixe ou variable)", duree: "10-15 ans", devise: "USD / CAD", description: "Prêt sans garant ni historique de crédit américain. Idéal pour les étudiants internationaux aux USA et Canada.", lien: "https://www.mpowerfinancing.com" },
+  { nom: "Sallie Mae", region: "Europe", nationalites: "Américains + certains internationaux avec co-signer US", paysEtude: "USA (universités américaines uniquement)", ecoles: "Plus de 2 200 universités américaines", montant: "Jusqu'à 100% des frais", taux: "À partir de 4,5% (variable) ou 6,5% (fixe)", duree: "5-15 ans", devise: "USD", description: "La plus grande institution de prêts étudiants aux USA. Nécessite un co-signer américain.", lien: "https://www.salliemae.com" },
+  { nom: "SoFi", region: "Europe", nationalites: "Américains + internationaux avec co-signer US", paysEtude: "USA", ecoles: "Universités américaines partenaires", montant: "Jusqu'à 100% des frais", taux: "À partir de 4,99% (variable)", duree: "5-20 ans", devise: "USD", description: "Prêt étudiant moderne avec des taux compétitifs. Nécessite un co-signer américain.", lien: "https://www.sofi.com" },
+  { nom: "Prodigy Finance", region: "Europe", nationalites: "Européens, Américains, Asiatiques", paysEtude: "USA, Canada, Royaume-Uni, Europe, Australie", ecoles: "Plus de 750 universités partenaires", montant: "Jusqu'à 100% des frais + subsistance", taux: "À partir de 6,5% (fixe)", duree: "7-15 ans", devise: "USD / GBP / EUR / CAD", description: "Prêt international sans garant pour les masters et MBA.", lien: "https://www.prodigyfinance.com" },
+  { nom: "MPOWER Financing", region: "Europe", nationalites: "Européens, Américains, Asiatiques", paysEtude: "USA, Canada", ecoles: "Plus de 400 universités partenaires", montant: "Jusqu'à 100 000 USD", taux: "À partir de 7,99%", duree: "10-15 ans", devise: "USD / CAD", description: "Prêt sans garant pour les étudiants internationaux en Amérique du Nord.", lien: "https://www.mpowerfinancing.com" },
+  { nom: "Prodigy Finance", region: "Asie", nationalites: "Asiatiques (Chine, Inde, Vietnam, Thaïlande)", paysEtude: "USA, Canada, Royaume-Uni, Europe, Australie", ecoles: "Plus de 750 universités partenaires", montant: "Jusqu'à 100% des frais + subsistance", taux: "À partir de 6,5% (fixe)", duree: "7-15 ans", devise: "USD / GBP / EUR", description: "Prêt pour étudiants asiatiques souhaitant étudier dans les meilleures universités mondiales.", lien: "https://www.prodigyfinance.com" },
+  { nom: "MPOWER Financing", region: "Asie", nationalites: "Asiatiques (Inde, Chine, Vietnam, Pakistan)", paysEtude: "USA, Canada", ecoles: "Plus de 400 universités partenaires", montant: "Jusqu'à 100 000 USD", taux: "À partir de 7,99%", duree: "10-15 ans", devise: "USD / CAD", description: "Prêt sans garant pour les étudiants asiatiques aux USA et Canada.", lien: "https://www.mpowerfinancing.com" },
+  { nom: "HDFC Credila", region: "Asie", nationalites: "Indiens (résidents en Inde)", paysEtude: "USA, Canada, Royaume-Uni, Europe, Australie, Singapour", ecoles: "Universités reconnues mondialement", montant: "Jusqu'à 100% des frais", taux: "À partir de 9% (variable)", duree: "10-15 ans", devise: "INR / USD", description: "Spécialisé pour les étudiants indiens souhaitant étudier à l'étranger.", lien: "https://www.hdfccredila.com" },
+  { nom: "Sallie Mae", region: "Amérique", nationalites: "Américains (USA)", paysEtude: "USA", ecoles: "Plus de 2 200 universités américaines", montant: "Jusqu'à 100% des frais", taux: "À partir de 4,5% (variable)", duree: "5-15 ans", devise: "USD", description: "La référence des prêts étudiants américains.", lien: "https://www.salliemae.com" },
+  { nom: "SoFi", region: "Amérique", nationalites: "Américains (USA)", paysEtude: "USA", ecoles: "Universités américaines partenaires", montant: "Jusqu'à 100% des frais", taux: "À partir de 4,99%", duree: "5-20 ans", devise: "USD", description: "Prêt moderne avec taux compétitifs pour étudiants américains.", lien: "https://www.sofi.com" },
+  { nom: "Discover Student Loans", region: "Amérique", nationalites: "Américains + co-signer US", paysEtude: "USA", ecoles: "Plus de 2 000 universités", montant: "Jusqu'à 100% des frais", taux: "À partir de 5,49%", duree: "5-15 ans", devise: "USD", description: "Prêt étudiant pour les universités américaines, sans frais de dossier.", lien: "https://www.discover.com/student-loans/" },
+  { nom: "MPOWER Financing", region: "Amérique", nationalites: "Latino-Américains, Brésiliens, Mexicains + internationaux", paysEtude: "USA, Canada", ecoles: "Plus de 400 universités partenaires", montant: "Jusqu'à 100 000 USD", taux: "À partir de 7,99%", duree: "10-15 ans", devise: "USD / CAD", description: "Prêt sans garant pour étudiants internationaux en Amérique du Nord.", lien: "https://www.mpowerfinancing.com" },
+  { nom: "Prodigy Finance", region: "International", nationalites: "150+ nationalités (hors USA et pays sanctionnés)", paysEtude: "USA, Canada, Royaume-Uni, Europe, Australie, Singapour", ecoles: "Plus de 750 universités partenaires", montant: "Jusqu'à 100% des frais + subsistance", taux: "À partir de 6,5% (fixe)", duree: "7-15 ans", devise: "USD / GBP / EUR / CAD / AUD", description: "Prêt international sans garant, basé sur le potentiel futur. Disponible pour la majorité des nationalités.", lien: "https://www.prodigyfinance.com" },
+  { nom: "MPOWER Financing", region: "International", nationalites: "190+ nationalités (hors USA)", paysEtude: "USA, Canada", ecoles: "Plus de 400 universités partenaires", montant: "Jusqu'à 100 000 USD", taux: "À partir de 7,99%", duree: "10-15 ans", devise: "USD / CAD", description: "Prêt sans garant ni historique de crédit, pour étudiants internationaux aux USA et Canada.", lien: "https://www.mpowerfinancing.com" },
+  { nom: "International Student Loan (ISL)", region: "International", nationalites: "International (avec co-signer US)", paysEtude: "USA", ecoles: "Universités américaines partenaires", montant: "Variable", taux: "Variable", duree: "5-15 ans", devise: "USD", description: "Plateforme qui compare plusieurs prêteurs américains.", lien: "https://www.internationalstudentloan.com" },
+  { nom: "Earnest", region: "International", nationalites: "Américains + internationaux avec co-signer US", paysEtude: "USA", ecoles: "Universités américaines", montant: "Jusqu'à 100% des frais", taux: "À partir de 4,99%", duree: "5-15 ans", devise: "USD", description: "Prêt avec des taux personnalisés selon votre profil financier.", lien: "https://www.earnest.com" }
+];  
+const PAGES_VALIDES = ['accueil', 'bourses', 'bourse-detail', 'mentions', 'confidentialite', 'contact', 'avis', 'prets'];
 
 /* ============================================================
    CONSTRUCTION DES FILTRES
    ============================================================ */
+  /* ============================================================
+   AFFICHAGE DES PRÊTS
+   ============================================================ */
+let regionActive = "Tous";
+
+function afficherPrets(region) {
+  const grid = document.getElementById('gridPrets');
+  if (!grid) return;
+
+  let liste = prets;
+  if (region !== "Tous") {
+    liste = liste.filter(p => p.region === region);
+  }
+
+  if (liste.length === 0) {
+    grid.innerHTML = `<div class="empty"><h3>Aucun prêt trouvé pour cette région</h3></div>`;
+    return;
+  }
+
+  grid.innerHTML = liste.map(p => `
+    <article class="card" style="border-left: 4px solid var(--primary);">
+      <div class="card-top">
+        <span class="flag">🏦</span>
+        <div>
+          <div class="card-country">${p.region}</div>
+          <div class="card-level">${p.nationalites}</div>
+        </div>
+      </div>
+      <h3>${p.nom}</h3>
+      <p class="card-desc">${p.description}</p>
+      <div class="card-meta">
+        <span class="tag type">🌍 ${p.paysEtude}</span>
+        <span class="tag amount">💰 ${p.montant}</span>
+        <span class="tag deadline">📊 ${p.taux}</span>
+      </div>
+      <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 14px; font-size: 0.82rem;">
+        <div style="margin-bottom: 6px;"><strong>🏫 Écoles :</strong> ${p.ecoles}</div>
+        <div style="margin-bottom: 6px;"><strong>⏱️ Durée :</strong> ${p.duree}</div>
+        <div><strong>💱 Devise :</strong> ${p.devise}</div>
+      </div>
+      <a href="${p.lien}" target="_blank" rel="noopener" class="card-btn">Site officiel →</a>
+    </article>
+  `).join('');
+}
+
+function filtrerPrets(region) {
+  regionActive = region;
+  document.querySelectorAll('#filterPrets .country-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.region === region);
+  });
+  afficherPrets(region);
+}
+
 function construireFiltres() {
   const filterBox = document.getElementById('countryFilter');
   if (!filterBox) return;
@@ -2964,6 +3121,7 @@ window.addEventListener('hashchange', gererHash);
 document.addEventListener('DOMContentLoaded', () => {
   construireFiltres();
   afficherBourses(bourses);
+  afficherPrets('Tous');
   gererHash();
 
   const searchBourses = document.getElementById('searchInput2');
