@@ -1612,6 +1612,44 @@
     </div>
 
     <div class="country-filter" id="countryFilter"></div>
+        <div class="country-filter" id="countryFilter"></div>
+
+    <!-- BANDEAU SPÉCIAL CHINE (visible uniquement quand on filtre Chine) -->
+    <div id="chineseBanner" style="display: none; background: linear-gradient(135deg, #fef3c7, #fef9e7); border-left: 6px solid #dc2626; padding: 24px; border-radius: 14px; margin-bottom: 28px; box-shadow: 0 4px 20px rgba(220, 38, 38, 0.15);">
+      
+      <h3 style="color: #991b1b; margin-bottom: 12px; font-size: 1.3rem; display: flex; align-items: center; gap: 10px;">
+        🇨🇳 Postuler aux bourses chinoises
+      </h3>
+      
+      <p style="color: #7f1d1d; font-size: 1rem; line-height: 1.7; margin-bottom: 18px;">
+        Si vous êtes prêt à postuler pour les bourses chinoises, cliquez sur le bouton ci-dessous pour accéder à la plateforme officielle de candidature du <strong>Chinese Scholarship Council (CSC)</strong> :
+      </p>
+      
+      <a href="https://studyinchina.csc.edu.cn/#/login" target="_blank" rel="noopener" style="display: inline-block; background: linear-gradient(135deg, #dc2626, #b91c1c); color: white; padding: 15px 32px; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 1rem; box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3); transition: transform 0.2s;">
+        🎓 Postuler sur Study in China (CSC)
+      </a>
+      
+      <div style="background: #fef3c7; padding: 18px 20px; border-radius: 10px; border-left: 4px solid #f59e0b; margin-top: 20px;">
+        <p style="color: #92400e; font-weight: 800; margin-bottom: 12px; font-size: 1rem;">
+          ⚠️ IMPORTANT — À LIRE AVANT DE POSTULER :
+        </p>
+        <ul style="color: #92400e; font-size: 0.95rem; line-height: 1.8; padding-left: 20px; margin: 0;">
+          <li>🔍 <strong>Faites vos recherches</strong> sur les universités chinoises et leurs programmes</li>
+          <li>🌍 <strong>Vérifiez les accréditations internationales</strong> des universités et de leurs diplômes</li>
+          <li>📋 <strong>Renseignez-vous toujours sur les types de bourses</strong> disponibles avant d'envoyer votre candidature</li>
+          <li>💰 <strong>Vérifiez ce que la bourse couvre</strong> : frais de scolarité, logement, allocation mensuelle, assurance santé</li>
+          <li>⏰ <strong>Respectez les dates limites</strong> de chaque programme</li>
+          <li>🏫 <strong>Contactez directement l'université</strong> si vous avez des doutes sur un programme</li>
+        </ul>
+      </div>
+      
+      <p style="color: #7f1d1d; font-size: 0.88rem; margin-top: 16px; font-style: italic;">
+        💡 Conseil : la plateforme CSC est la <strong>seule voie officielle</strong> pour postuler. Ne payez JAMAIS un intermédiaire.
+      </p>
+      
+    </div>
+
+    <div class="grid" id="boursesGrid"></div>
     <div class="grid" id="boursesGrid"></div>
   </div>
 
@@ -2828,6 +2866,13 @@ function filtrerPays(pays) {
   document.querySelectorAll('.country-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.pays === pays);
   });
+  
+  // Afficher le bandeau Chine uniquement quand on filtre par Chine
+  const banner = document.getElementById('chineseBanner');
+  if (banner) {
+    banner.style.display = (pays === 'Chine') ? 'block' : 'none';
+  }
+  
   const searchBourses = document.getElementById('searchInput2');
   const terme = searchBourses ? searchBourses.value.toLowerCase().trim() : '';
   appliquerFiltres(terme);
@@ -2841,6 +2886,16 @@ function filtrer() {
 
 function appliquerFiltres(terme) {
   let liste = bourses;
+  const banner = document.getElementById('chineseBanner');
+  if (banner) {
+    if (paysActif === 'Chine') {
+      banner.style.display = 'block';
+    } else if (terme && terme.includes('chine')) {
+      banner.style.display = 'block';
+    } else {
+      banner.style.display = 'none';
+    }
+  }
   if (paysActif !== "Tous") liste = liste.filter(b => b.pays === paysActif);
   if (terme) {
     liste = liste.filter(b =>
