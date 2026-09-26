@@ -3077,15 +3077,26 @@ function filtrer() {
 
 function appliquerFiltres(terme) {
   let liste = bourses;
-  const banner = document.getElementById('chineseBanner');
-  if (banner) {
-    if (paysActif === 'Chine') {
-      banner.style.display = 'block';
-    } else if (terme && terme.includes('chine')) {
-      banner.style.display = 'block';
-    } else {
-      banner.style.display = 'none';
-    }
+  
+  // Gestion des bandeaux (Chine, Hongrie, Afrique)
+  const chineseBanner = document.getElementById('chineseBanner');
+  const hungaryBanner = document.getElementById('hungaryBanner');
+  const africaBanner = document.getElementById('africaBanner');
+  
+  if (chineseBanner) {
+    chineseBanner.style.display = (paysActif === 'Chine') ? 'block' : 'none';
+  }
+  if (hungaryBanner) {
+    hungaryBanner.style.display = (paysActif === 'Hongrie') ? 'block' : 'none';
+  }
+  if (africaBanner) {
+    africaBanner.style.display = (paysActif === 'International') ? 'block' : 'none';
+  }
+  
+  if (paysActif !== "Tous") {
+    liste = liste.filter(b => b.pays === paysActif);
+  }
+  
   }
   if (paysActif !== "Tous") liste = liste.filter(b => b.pays === paysActif);
   if (terme) {
