@@ -2914,6 +2914,19 @@ function afficherBourses(liste) {
     </article>
   `).join('');
 }
+  
+function toggleGuideHongrie() {
+  const content = document.getElementById('hongrieContent');
+  const btn = document.getElementById('hongrieToggleBtn');
+  if (!content || !btn) return;
+  if (content.style.display === 'none') {
+    content.style.display = 'block';
+    btn.innerHTML = '📖 Masquer le guide ▲';
+  } else {
+    content.style.display = 'none';
+    btn.innerHTML = '📖 Voir le guide complet ▼';
+  }
+}
 
 function filtrerPays(pays) {
   paysActif = pays;
