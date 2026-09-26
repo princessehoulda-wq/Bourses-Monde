@@ -2935,11 +2935,14 @@ function filtrerPays(pays) {
   });
   
   // Afficher le bandeau Chine uniquement quand on filtre par Chine
-  const banner = document.getElementById('chineseBanner');
-  if (banner) {
-    banner.style.display = (pays === 'Chine') ? 'block' : 'none';
+    const chineseBanner = document.getElementById('chineseBanner');
+  if (chineseBanner) {
+    chineseBanner.style.display = (pays === 'Chine') ? 'block' : 'none';
   }
-  
+  const hungaryBanner = document.getElementById('hungaryBanner');
+  if (hungaryBanner) {
+    hungaryBanner.style.display = (pays === 'Hongrie') ? 'block' : 'none';
+  }
   const searchBourses = document.getElementById('searchInput2');
   const terme = searchBourses ? searchBourses.value.toLowerCase().trim() : '';
   appliquerFiltres(terme);
