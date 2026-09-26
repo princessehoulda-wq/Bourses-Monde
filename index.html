@@ -3098,7 +3098,7 @@ function appliquerFiltres(terme) {
   }
   
   }
-  if (paysActif !== "Tous") liste = liste.filter(b => b.pays === paysActif);
+  
   if (terme) {
     liste = liste.filter(b =>
       b.titre.toLowerCase().includes(terme) ||
